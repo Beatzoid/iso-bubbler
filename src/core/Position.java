@@ -1,3 +1,5 @@
+package core;
+
 public class Position {
     private final int x;
     private final int y;

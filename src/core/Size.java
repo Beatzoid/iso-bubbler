@@ -1,3 +1,5 @@
+package core;
+
 public class Size {
     private final int width;
     private final int height;

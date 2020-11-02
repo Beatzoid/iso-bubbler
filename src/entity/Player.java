@@ -1,9 +1,14 @@
+package entity;
+
+import controller.Controller;
+import core.Position;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Player extends GameObject {
 
-    private Controller controller;
+    private final Controller controller;
 
     public Player(Controller controller) {
         super();

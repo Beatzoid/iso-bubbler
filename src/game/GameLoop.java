@@ -1,4 +1,5 @@
-@SuppressWarnings("FieldCanBeLocal")
+package game;
+
 public class GameLoop implements Runnable {
 
     private final Game game;
