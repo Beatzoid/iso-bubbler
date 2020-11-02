@@ -4,7 +4,7 @@ import java.awt.image.BufferStrategy;
 
 public class Display extends JFrame {
 
-    private Canvas canvas;
+    private final Canvas canvas;
 
     public Display(int width, int height) {
         setTitle("My 2D Game");
@@ -29,6 +29,15 @@ public class Display extends JFrame {
 
         graphics.setColor(Color.BLACK);
         graphics.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        Rectangle rectangle = game.getRectangle();
+        graphics.setColor(Color.blue);
+        graphics.fillRect(
+                (int) rectangle.getX(),
+                (int) rectangle.getY(),
+                (int) rectangle.getWidth(),
+                (int) rectangle.getHeight()
+        );
 
         graphics.dispose();
         bufferStrategy.show();

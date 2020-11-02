@@ -1,6 +1,7 @@
+@SuppressWarnings("FieldCanBeLocal")
 public class GameLoop implements Runnable {
 
-    private Game game;
+    private final Game game;
 
     private boolean running;
     private final double updateRate = 1.0d/60.0d;
@@ -25,18 +26,20 @@ public class GameLoop implements Runnable {
             accumulator += lastRenderTimeInSeconds;
             lastUpdate = currentTime;
 
-            while (accumulator > updateRate) {
-                update();
-                accumulator -= updateRate;
-            }
-            render();
+            if(accumulator >= updateRate) {
+                while (accumulator >= updateRate) {
+                    update();
+                    accumulator -= updateRate;
+                }
+                render();
+            } 
             printStats();
         }
     }
 
     private void printStats() {
         if (System.currentTimeMillis() > nextStatTime) {
-            System.out.println(String.format("FPS: %d, UPS: %d", fps, ups));
+            System.out.printf("FPS: %d, UPS: %d%n", fps, ups);
             fps = 0;
             ups = 0;
             nextStatTime = System.currentTimeMillis() + 1000;
