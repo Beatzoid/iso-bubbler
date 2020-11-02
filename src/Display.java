@@ -6,7 +6,7 @@ public class Display extends JFrame {
 
     private final Canvas canvas;
 
-    public Display(int width, int height) {
+    public Display(int width, int height, Input input) {
         setTitle("My 2D Game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -15,6 +15,7 @@ public class Display extends JFrame {
         canvas.setPreferredSize(new Dimension(width, height));
         canvas.setFocusable(false);
         add(canvas);
+        addKeyListener(input);
         pack();
 
         canvas.createBufferStrategy(3);
