@@ -13,7 +13,7 @@ public class Display extends JFrame {
     private Renderer renderer;
 
     public Display(int width, int height, Input input) {
-        setTitle("My 2D game.Game");
+        setTitle("My 2D game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
