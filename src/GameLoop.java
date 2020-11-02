@@ -1,10 +1,16 @@
 public class GameLoop implements Runnable {
 
+    private Game game;
+
     private boolean running;
     private final double updateRate = 1.0d/60.0d;
 
     private long nextStatTime;
     private int fps, ups;
+
+    public GameLoop(Game game) {
+        this.game = game;
+    }
 
     @Override
     public void run() {
@@ -37,11 +43,13 @@ public class GameLoop implements Runnable {
         }
     }
 
-    private void render() {
-        fps++;
+    private void update() {
+        game.update();
+        ups++;
     }
 
-    private void update() {
-        ups++;
+    private void render() {
+        game.render();
+        fps++;
     }
 }
