@@ -5,7 +5,7 @@ import controller.Controller;
 public class Movement {
 
     private Vector2D vector;
-    private double speed;
+    private final double speed;
 
     public Movement(double speed) {
         this.speed = speed;

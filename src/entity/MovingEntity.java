@@ -9,9 +9,9 @@ import java.awt.*;
 
 public abstract class MovingEntity extends GameObject {
 
-    private Controller controller;
-    private Movement movement;
-    private AnimationManager animationManager;
+    private final Controller controller;
+    private final Movement movement;
+    private final AnimationManager animationManager;
 
     public MovingEntity(Controller controller, SpriteLibrary spriteLibrary) {
         super();
