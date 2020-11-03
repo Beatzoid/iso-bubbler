@@ -21,6 +21,10 @@ public abstract class GameObject {
         return position;
     }
 
+    public void setPosition(Position position) {
+        this.position = position;
+    }
+
     public Size getSize() {
         return size;
     }
