@@ -1,10 +1,8 @@
 package game.state;
 
-import controller.PlayerController;
 import core.Size;
+import display.Camera;
 import entity.GameObject;
-import entity.Player;
-import game.Game;
 import gfx.SpriteLibrary;
 import input.Input;
 import map.GameMap;
@@ -18,15 +16,18 @@ public abstract class State {
     protected List<GameObject> gameObjects;
     protected SpriteLibrary spriteLibrary;
     protected Input input;
+    protected Camera camera;
 
-    public State(Input input) {
+    public State(Size windowSize, Input input) {
         this.input = input;
         gameObjects = new ArrayList<>();
         spriteLibrary = new SpriteLibrary();
+        camera = new Camera(windowSize);
     }
 
     public void update() {
         gameObjects.forEach(GameObject::update);
+        camera.update(this);
     }
 
     public List<GameObject> getGameObjects() {
@@ -35,5 +36,9 @@ public abstract class State {
 
     public GameMap getGameMap() {
         return gameMap;
+    }
+
+    public Camera getCamera() {
+        return camera;
     }
 }

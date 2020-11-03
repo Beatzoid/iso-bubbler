@@ -30,4 +30,12 @@ public class Position {
         x += vector.getX();
         y += vector.getY();
     }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
 }

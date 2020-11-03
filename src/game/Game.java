@@ -1,5 +1,6 @@
 package game;
 
+import core.Size;
 import display.Display;
 import game.state.GameState;
 import game.state.State;
@@ -16,7 +17,7 @@ public class Game {
     public Game(int width, int height) {
         input = new Input();
         display = new Display(width, height, input);
-        state = new GameState(input);
+        state = new GameState(new Size(width, height), input);
 
     }
 
