@@ -1,9 +1,6 @@
 package gfx;
 
-import game.Game;
-
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
@@ -11,9 +8,7 @@ import java.util.Map;
 
 public class SpriteLibrary {
 
-    private final static String PATH_TO_UNITS = "/sprites/units";
-
-    private final Map<String, SpriteSet> units;
+    private Map<String, SpriteSet> units;
     private Map<String, Image> tiles;
 
     public SpriteLibrary() {
@@ -23,31 +18,30 @@ public class SpriteLibrary {
     }
 
     private void loadSpritesFromDisk() {
-        loadUnits();
-        loadTiles();
+        loadUnits("/sprites/units");
+        loadTiles("/sprites/tiles");
     }
 
-    private void loadTiles() {
-        BufferedImage image = new BufferedImage(Game.SPRITE_SIZE, Game.SPRITE_SIZE, BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = image.createGraphics();
+    private void loadTiles(String path) {
+        String[] imagesInFolder = getImagesInFolder(path);
 
-        graphics.setColor(Color.RED);
-        graphics.drawRect(0, 0, Game.SPRITE_SIZE, Game.SPRITE_SIZE);
-
-        graphics.dispose();
-        tiles.put("default", image);
-
+        for(String filename: imagesInFolder) {
+            tiles.put(
+                    filename.substring(0, filename.length() - 4),
+                    ImageUtils.loadImage(path + "/" + filename)
+            );
+        }
     }
 
-    private void loadUnits() {
-        String[] folderNames = getFolderNames(PATH_TO_UNITS);
+    private void loadUnits(String path) {
+        String[] folderNames = getFolderNames(path);
 
-        for (String folderName : folderNames) {
+        for(String folderName: folderNames) {
             SpriteSet spriteSet = new SpriteSet();
-            String pathToFolder = PATH_TO_UNITS + "/" + folderName;
-            String[] sheetsInFolder = getSheetsInFolder(pathToFolder);
+            String pathToFolder = path + "/" + folderName;
+            String[] sheetsInFolder = getImagesInFolder(pathToFolder);
 
-            for (String sheetName : sheetsInFolder) {
+            for(String sheetName : sheetsInFolder) {
                 spriteSet.addSheet(
                         sheetName.substring(0, sheetName.length() - 4),
                         ImageUtils.loadImage(pathToFolder + "/" + sheetName)
@@ -58,7 +52,7 @@ public class SpriteLibrary {
         }
     }
 
-    private String[] getSheetsInFolder(String basePath) {
+    private String[] getImagesInFolder(String basePath) {
         URL resource = SpriteLibrary.class.getResource(basePath);
         File file = new File(resource.getFile());
         return file.list((current, name) -> new File(current, name).isFile());
