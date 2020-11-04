@@ -1,5 +1,6 @@
 package game.state;
 
+import core.Position;
 import core.Size;
 import display.Camera;
 import entity.GameObject;
@@ -53,5 +54,9 @@ public abstract class State {
 
     public Time getTime() {
         return time;
+    }
+
+    public Position getRandomPosition() {
+        return gameMap.getRandomPositon();
     }
 }
