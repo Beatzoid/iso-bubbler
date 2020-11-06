@@ -57,6 +57,6 @@ public abstract class State {
     }
 
     public Position getRandomPosition() {
-        return gameMap.getRandomPositon();
+        return gameMap.getRandomPosition();
     }
 }
