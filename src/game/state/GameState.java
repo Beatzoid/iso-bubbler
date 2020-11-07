@@ -10,6 +10,14 @@ import map.GameMap;
 
 public class GameState extends State {
 
+    /**
+     * The GameState handles the game state
+     * @param windowSize The windowSize
+     * @param input The Input
+     *
+     * @see Size
+     * @see Input
+     */
     public GameState(Size windowSize, Input input) {
         super(windowSize, input);
         gameMap = new GameMap(new Size(20, 20), spriteLibrary);

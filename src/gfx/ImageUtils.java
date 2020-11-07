@@ -13,6 +13,10 @@ public class ImageUtils {
     public static final int ALPHA_BIT_MASKED = 2;
     public static final int ALPHA_BLEND = 3;
 
+    /**
+     * Load a image
+     * @param filePath The file path to load from
+     */
     public static Image loadImage(String filePath) {
         try {
             Image imageFromDisk = ImageIO.read(ImageUtils.class.getResource(filePath));
@@ -33,6 +37,11 @@ public class ImageUtils {
         return null;
     }
 
+    /**
+     * Make a compatible image based on the system being used currently
+     * @param size The size
+     * @param transparency The transparency
+     */
     public static Image createCompatibleImage(Size size, int transparency) {
         GraphicsConfiguration graphicsConfiguration = GraphicsEnvironment.getLocalGraphicsEnvironment()
                 .getDefaultScreenDevice()

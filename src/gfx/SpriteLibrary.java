@@ -11,6 +11,9 @@ public class SpriteLibrary {
     private Map<String, SpriteSet> units;
     private Map<String, Image> tiles;
 
+    /**
+     * The SpriteLibrary keeps track of all sprites
+     */
     public SpriteLibrary() {
         units = new HashMap<>();
         tiles = new HashMap<>();
@@ -64,10 +67,18 @@ public class SpriteLibrary {
         return file.list((current, name) -> new File(current, name).isDirectory());
     }
 
+    /**
+     * Get a unit
+     * @param name The name of the unit to get
+     */
     public SpriteSet getUnit(String name) {
         return units.get(name);
     }
 
+    /**
+     * Get a tile
+     * @param name The name of the tile to get
+     */
     public Image getTile(String name) {
         return tiles.get(name);
     }

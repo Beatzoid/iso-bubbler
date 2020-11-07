@@ -15,6 +15,12 @@ public class AnimationManager {
     private int frameIndex;
     private int directionIndex;
 
+    /**
+     * The AnimationManager manages animations
+     * @param spriteSet The SpriteSet to use
+     *
+     * @see SpriteSet
+     */
     public AnimationManager(SpriteSet spriteSet) {
         this.spriteSet = spriteSet;
         this.updatesPerFrame = 20;
@@ -24,6 +30,9 @@ public class AnimationManager {
         playAnimation("stand");
     }
 
+    /**
+     * Get the sprites
+     */
     public Image getSprites() {
         return currentAnimationSheet.getSubimage(
                 frameIndex * Game.SPRITE_SIZE,
@@ -33,6 +42,12 @@ public class AnimationManager {
         );
     }
 
+    /**
+     * Update the animation
+     * @param direction The direction
+     *
+     * @see Direction
+     */
     public void update(Direction direction) {
         currentFrameTime++;
         directionIndex = direction.getAnimationRow();
@@ -47,6 +62,10 @@ public class AnimationManager {
         }
     }
 
+    /**
+     * Play a animation
+     * @param name The name of the animation to play
+     */
     public void playAnimation(String name) {
         this.currentAnimationSheet = (BufferedImage) spriteSet.get(name);
     }

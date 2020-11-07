@@ -20,6 +20,12 @@ public class Camera {
 
     private Optional<GameObject> objectWithFocus;
 
+    /**
+     * The Camera manages following a character
+     * @param windowSize The window size
+     *
+     * @see Size
+     */
     public Camera(Size windowSize) {
         this.position = new Position(0, 0);
         this.windowSize = windowSize;
@@ -35,10 +41,20 @@ public class Camera {
         );
     }
 
+    /**
+     * Focus on a GameObject
+     * @param object The GameObject to focus on
+     *
+     * @see GameObject
+     */
     public void focusOn(GameObject object) {
         this.objectWithFocus = Optional.of(object);
     }
 
+    /**
+     * Update the camera
+     * @param state The state
+     */
     public void update(State state) {
         if(objectWithFocus.isPresent()) {
             Position objectPosition = objectWithFocus.get().getPosition();
@@ -69,10 +85,17 @@ public class Camera {
         }
     }
 
+    /**
+     * Get the position
+     */
     public Position getPosition() {
         return position;
     }
 
+    /**
+     * Get whether a GameObject is within the view of the camera
+     * @param gameObject The GameObject to check
+     */
     public boolean isInView(GameObject gameObject) {
         return viewBounds.intersects(
                 gameObject.getPosition().intX(),
@@ -82,6 +105,9 @@ public class Camera {
         );
     }
 
+    /**
+     * Get the size
+     */
     public Size getSize() {
         return windowSize;
     }

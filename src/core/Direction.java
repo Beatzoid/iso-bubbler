@@ -1,5 +1,8 @@
 package core;
 
+/**
+ * The direction class manages direction for NPC's and the player
+ */
 public enum Direction {
     S(0),
     SW(1),
@@ -16,6 +19,10 @@ public enum Direction {
         this.animationRow = animationRow;
     }
 
+    /**
+     * Turn a Motion into a Direction
+     * @param motion The motion to turn into a Direction
+     */
     public static Direction fromMotion(Motion motion) {
         double x = motion.getVector().getX();
         double y = motion.getVector().getY();
@@ -32,6 +39,9 @@ public enum Direction {
         return S;
     }
 
+    /**
+     * Get the animation row
+     */
     public int getAnimationRow() {
         return animationRow;
     }

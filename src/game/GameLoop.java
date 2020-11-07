@@ -1,5 +1,13 @@
 package game;
 
+/**
+ * The main gameloop.
+ *
+ * @see game
+ * @see Runnable
+ * @author beatzoid
+ */
+
 public class GameLoop implements Runnable {
 
     public static final int UPDATES_PER_SECOND = 60;
@@ -12,6 +20,13 @@ public class GameLoop implements Runnable {
     private long nextStatTime;
     private int fps, ups;
 
+    /**
+     * The main gameloop.
+     *
+     * @see game
+     * @see Runnable
+     * @author beatzoid
+     */
     public GameLoop(Game game) {
         this.game = game;
     }

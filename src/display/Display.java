@@ -13,6 +13,14 @@ public class Display extends JFrame {
     private final Canvas canvas;
     private final Renderer renderer;
 
+    /**
+     * The Display class manages the display
+     * @param width The width of the display
+     * @param height The height of the display
+     * @param input The Input
+     *
+     * @see Input
+     */
     public Display(int width, int height, Input input) {
         setTitle("My 2D game");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,6 +41,12 @@ public class Display extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Render the Display
+     * @param state The state
+     *
+     * @see State
+     */
     public void render(State state) {
         BufferStrategy bufferStrategy = canvas.getBufferStrategy();
         Graphics graphics = bufferStrategy.getDrawGraphics();

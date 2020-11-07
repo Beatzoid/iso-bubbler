@@ -4,6 +4,7 @@ import core.Position;
 
 public class NPCController implements Controller {
 
+
     private boolean up;
     private boolean right;
     private boolean down;
@@ -29,6 +30,14 @@ public class NPCController implements Controller {
         return left;
     }
 
+    /**
+     * Move the NPC to a specified location
+     *
+     * @param target The position to move to
+     * @param current The current position of the NPC
+     *
+     * @see Position
+     */
     public void moveToTarget(Position target, Position current) {
         double deltaX = target.getX() - current.getX();
         double deltaY = target.getY() - current.getY();
@@ -39,6 +48,9 @@ public class NPCController implements Controller {
         left = deltaX < 0 && Math.abs(deltaX) > Position.PROXIMITY_RANGE;
     }
 
+    /**
+     * Stop the NPC
+     */
     public void stop() {
         up = false;
         right = false;

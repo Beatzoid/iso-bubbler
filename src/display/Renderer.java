@@ -10,6 +10,14 @@ import java.awt.*;
 
 public class Renderer {
 
+    /**
+     * Render the GameObjects
+     * @param state The state
+     * @param graphics The graphics
+     *
+     * @see Graphics
+     * @see State
+     */
     public void render(State state, Graphics graphics) {
         renderMap(state, graphics);
         Camera camera = state.getCamera();

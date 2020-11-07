@@ -18,11 +18,22 @@ public class Wander extends AIState {
         targets = new ArrayList<>();
     }
 
+    /**
+     * Initialize the transition
+     */
     @Override
     protected AITransition initializeTransition() {
         return new AITransition("stand", ((state, currentCharacter) -> arrived(currentCharacter)));
     }
 
+    /**
+     * Update the transition
+     * @param state The state
+     * @param currentCharacter The character
+     *
+     * @see State
+     * @see NPC
+     */
     @Override
     public void update(State state, NPC currentCharacter) {
         if (targets.isEmpty()) {
@@ -37,6 +48,11 @@ public class Wander extends AIState {
         }
     }
 
+    /**
+     *
+     * @param currentCharacter The character
+     * @return Whether or not the NPC has arrived at the specified location
+     */
     private boolean arrived(NPC currentCharacter) {
         return currentCharacter.getPosition().isInRangeOf(targets.get(0));
     }

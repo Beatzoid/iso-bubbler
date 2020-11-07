@@ -5,8 +5,19 @@ import java.awt.event.KeyEvent;
 
 public class PlayerController implements Controller {
 
+    /**
+     * The input
+     *
+     * @see Input
+     */
     private final Input input;
 
+    /**
+     * The controller that controls the player
+     * @param input A Input for the player
+     *
+     * @see Input
+     */
     public PlayerController(Input input) {
         this.input = input;
     }

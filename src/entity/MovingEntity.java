@@ -20,6 +20,15 @@ public abstract class MovingEntity extends GameObject {
     protected Direction direction;
     protected List<Effect> effects;
 
+    /**
+     * The MovingEntity class manages all MovingEnties and extends the GameObject class
+     * @param controller The controller
+     * @param spriteLibrary The SpriteLibrary
+     *
+     * @see GameObject
+     * @see Controller
+     * @see SpriteLibrary
+     */
     public MovingEntity(Controller controller, SpriteLibrary spriteLibrary) {
         super();
         this.controller = controller;
@@ -29,6 +38,10 @@ public abstract class MovingEntity extends GameObject {
         effects = new ArrayList<>();
     }
 
+    /**
+     * Update the MovingEntity
+     * @param state The state
+     */
     @Override
     public void update(State state) {
         motion.update(controller);
@@ -63,15 +76,25 @@ public abstract class MovingEntity extends GameObject {
         }
     }
 
+    /**
+     * Get the sprite
+     */
     @Override
     public Image getSprite() {
         return animationManager.getSprites();
     }
 
+    /**
+     * Get the controller
+     */
     public Controller getController() {
         return controller;
     }
 
+    /**
+     * Multiply the speed
+     * @param multiplier How much to multiply the speed by
+     */
     public void multiplySpeed(double multiplier) {
         motion.multiply(multiplier);
     }
