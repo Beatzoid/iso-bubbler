@@ -1,6 +1,7 @@
 package entity;
 
 import controller.Controller;
+import core.CollisionBox;
 import core.Direction;
 import core.Motion;
 import entity.action.Action;
@@ -54,6 +55,7 @@ public abstract class MovingEntity extends GameObject {
         animationManager.update(direction);
         effects.forEach(effect -> effect.update(state, this));
 
+        handleCollisions(state);
         manageDirection();
         decideAnimation();
 
@@ -61,6 +63,12 @@ public abstract class MovingEntity extends GameObject {
 
         cleanup();
     }
+
+    private void handleCollisions(State state) {
+        state.getCollidingGameObjects(this).forEach(this::handleCollision);
+    }
+
+    protected abstract void handleCollision(GameObject other);
 
     private void handleMotion() {
         if (action.isEmpty()) {
@@ -103,6 +111,23 @@ public abstract class MovingEntity extends GameObject {
         }
     }
 
+    @Override
+    public boolean collidesWith(GameObject other) {
+        return getCollisionBox().collidesWith(other.getCollisionBox());
+    }
+
+    @Override
+    public CollisionBox getCollisionBox() {
+        return new CollisionBox(
+            new Rectangle(
+                position.intX(),
+                position.intY(),
+                size.getWidth(),
+                size.getHeight()
+            )
+        );
+    }
+
     /**
      * Get the sprite
      */
@@ -141,5 +166,12 @@ public abstract class MovingEntity extends GameObject {
      */
     public void addEffect(Effect effect) {
         effects.add(effect);
+    }
+
+    /**
+     * Clear the Effects of an Entity
+     */
+    protected void clearEffects() {
+        effects.clear();
     }
 }

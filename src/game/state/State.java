@@ -12,6 +12,7 @@ import map.GameMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class State {
 
@@ -22,6 +23,14 @@ public abstract class State {
     protected Camera camera;
     protected Time time;
 
+    /**
+     * The State class manages a bunch of different classes
+     * @param windowSize The windowSize
+     * @param input The input
+     *
+     * @see Size
+     * @see Input
+     */
     public State(Size windowSize, Input input) {
         this.input = input;
         gameObjects = new ArrayList<>();
@@ -40,23 +49,48 @@ public abstract class State {
         gameObjects.sort(Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
     }
 
+    /**
+     * Get the GameObjects
+     */
     public List<GameObject> getGameObjects() {
         return gameObjects;
     }
 
+    /**
+     * Get the GameMap
+     */
     public GameMap getGameMap() {
         return gameMap;
     }
 
+    /**
+     * Get the Camera
+     */
     public Camera getCamera() {
         return camera;
     }
 
+    /**
+     * Get Time
+     */
     public Time getTime() {
         return time;
     }
 
+    /**
+     * Get a random position on the GameMap
+     */
     public Position getRandomPosition() {
         return gameMap.getRandomPosition();
+    }
+
+    /**
+     * Get all GameObjects that are colliding with another GameObject
+     * @param gameObject The GameObject to check
+     */
+    public List<GameObject> getCollidingGameObjects(GameObject gameObject) {
+        return gameObjects.stream()
+                .filter(other -> other.collidesWith(gameObject))
+                .collect(Collectors.toList());
     }
 }
