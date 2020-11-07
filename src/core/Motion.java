@@ -67,6 +67,9 @@ public class Motion {
         vector.multiply(multiplier);
     }
 
+    /**
+     * Stop the Motion
+     */
     public void stop() {
         vector = new Vector2D(0, 0);
     }
