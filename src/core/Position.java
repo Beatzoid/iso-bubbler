@@ -31,6 +31,16 @@ public class Position {
     }
 
     /**
+     * Create a copy of a Position
+     * @param position The Position to copy
+     *
+     * @see Position
+     */
+    public static Position copyOf(Position position) {
+        return new Position(position.getX(), position.getY());
+    }
+
+    /**
      * Get X as an int
      */
     public int intX() {
@@ -59,18 +69,6 @@ public class Position {
     }
 
     /**
-     * Apply a motion to the vector
-     * @param motion The motion to apply
-     *
-     * @see Motion
-     */
-    public void apply(Motion motion) {
-        Vector2D vector = motion.getVector();
-        x += vector.getX();
-        y += vector.getY();
-    }
-
-    /**
      * Set X to a new value
      * @param x The new value of X
      */
@@ -87,10 +85,38 @@ public class Position {
     }
 
     /**
+     * Apply a motion to the vector
+     * @param motion The motion to apply
+     *
+     * @see Motion
+     */
+    public void apply(Motion motion) {
+        Vector2D vector = motion.getVector();
+        x += vector.getX();
+        y += vector.getY();
+    }
+
+    /**
      * Get whether a position is within range
      * @param position The position to check
      */
     public boolean isInRangeOf(Position position) {
         return Math.abs(x - position.getX()) < Position.PROXIMITY_RANGE && Math.abs(y - position.getY()) < Position.PROXIMITY_RANGE;
+    }
+
+    /**
+     * Apply X based on a motion
+     * @param motion The Motion to go off of
+     */
+    public void applyX(Motion motion) {
+        x += motion.getVector().getX();
+    }
+
+    /**
+     * Apply Y based on a motion
+     * @param motion The Motion to go off of
+     */
+    public void applyY(Motion motion) {
+        x += motion.getVector().getY();
     }
 }

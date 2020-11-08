@@ -15,6 +15,25 @@ public class CollisionBox {
     }
 
     /**
+     * Make a new CollisionBox based on a Position and Size
+     * @param position The Position to go off of
+     * @param size The Size to go off of
+     *
+     * @see Position
+     * @see Size
+     */
+    public static CollisionBox of(Position position, Size size) {
+        return new CollisionBox(
+                new Rectangle(
+                        position.intX(),
+                        position.intY(),
+                        size.getWidth(),
+                        size.getHeight()
+                )
+        );
+    }
+
+    /**
      * Get whether or not a CollisionBox is intersecting with another CollisionBox
      * @param other The CollisionBox to check
      */

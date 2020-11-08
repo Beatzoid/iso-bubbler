@@ -69,8 +69,14 @@ public class Motion {
 
     /**
      * Stop the Motion
+     *
+     * @param stopX Whether to stop on the X axis
+     * @param stopY Whether to stop on the Y axis
      */
-    public void stop() {
-        vector = new Vector2D(0, 0);
+    public void stop(boolean stopX, boolean stopY) {
+        vector = new Vector2D(
+                stopX ? 0 : vector.getX(),
+                stopY ? 0 : vector.getY()
+        );
     }
 }
