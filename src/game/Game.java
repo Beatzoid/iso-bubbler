@@ -2,6 +2,7 @@ package game;
 
 import core.Size;
 import display.Display;
+import game.settings.GameSettings;
 import game.state.GameState;
 import game.state.State;
 import input.Input;
@@ -13,6 +14,7 @@ public class Game {
     private final Display display;
     private final Input input;
     private State state;
+    private GameSettings settings;
 
     /**
      * The Game class handles making a new input, display, and state.
@@ -25,7 +27,7 @@ public class Game {
         input = new Input();
         display = new Display(width, height, input);
         state = new GameState(new Size(width, height), input);
-
+        settings = new GameSettings(false);
     }
 
     /**
@@ -43,7 +45,7 @@ public class Game {
      * @see display.Display
      */
     public void render() {
-        display.render(state);
+        display.render(state, settings.isDebugMode());
     }
 
 }
