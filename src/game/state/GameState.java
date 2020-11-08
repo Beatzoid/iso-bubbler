@@ -9,6 +9,8 @@ import entity.action.Cough;
 import entity.effect.Sick;
 import input.Input;
 import map.GameMap;
+import ui.Spacing;
+import ui.UIContainer;
 
 public class GameState extends State {
 
@@ -24,6 +26,12 @@ public class GameState extends State {
         super(windowSize, input);
         gameMap = new GameMap(new Size(20, 20), spriteLibrary);
         initializeCharacters();
+        initializeUI();
+    }
+
+    private void initializeUI() {
+        UIContainer container = new UIContainer();
+        uiContainers.add(container);
     }
 
     private void initializeCharacters() {
