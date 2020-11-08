@@ -17,7 +17,7 @@ public abstract class UIComponent {
         position = new Position(0, 0);
         size = new Size(1, 1);
         margin = new Spacing(0);
-        padding = new Spacing(5);
+        padding = new Spacing(0);
     }
 
     public abstract Image getSprite();
