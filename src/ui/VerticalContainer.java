@@ -5,6 +5,15 @@ import core.Size;
 
 public class VerticalContainer extends UIContainer {
 
+    /**
+     * The VerticalContainer manages different UI elements on the vertical axis
+     *
+     * @param windowSize The window size
+     */
+    public VerticalContainer(Size windowSize) {
+        super(windowSize);
+    }
+
     @Override
     protected Size calculateContentSize() {
         int combinedChildHeight = 0;

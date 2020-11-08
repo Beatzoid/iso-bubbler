@@ -5,6 +5,15 @@ import core.Size;
 
 public class HorizontalContainer extends UIContainer {
 
+    /**
+     * The HorizontalContainer manages different UI elements on the horizontal axis
+     *
+     * @param windowSize The window size
+     */
+    public HorizontalContainer(Size windowSize) {
+        super(windowSize);
+    }
+
     @Override
     protected Size calculateContentSize() {
         int combinedChildWidth = 0;
