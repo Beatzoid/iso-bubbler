@@ -42,6 +42,13 @@ public class GameState extends State {
         camera.focusOn(player);
 
         initializeNPCs(200);
+        makeNumberOfNPCsSick(10);
+    }
+
+    private void makeNumberOfNPCsSick(int number) {
+        getGameObjectsOfClass(NPC.class).stream()
+                .limit(number)
+                .forEach(npc -> npc.addEffect(new Sick()));
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -49,7 +56,6 @@ public class GameState extends State {
         for (int i = 0; i < numberOfNPcs; i++) {
             NPC npc = new NPC(new NPCController(), spriteLibrary);
             npc.setPosition(gameMap.getRandomPosition());
-            npc.addEffect(new Sick());
             gameObjects.add(npc);
         }
     }

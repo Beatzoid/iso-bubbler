@@ -105,4 +105,16 @@ public abstract class State {
     public List<UIContainer> getUiContainers() {
         return uiContainers;
     }
+
+    /**
+     * Get the GameObjects of a certain class
+     * @param clazz The class to get
+     */
+    public <T extends GameObject> List<T> getGameObjectsOfClass(Class<T> clazz) {
+        //noinspection unchecked
+        return gameObjects.stream()
+                .filter(clazz::isInstance)
+                .map(gameObject -> (T) gameObject)
+                .collect(Collectors.toList());
+    }
 }
