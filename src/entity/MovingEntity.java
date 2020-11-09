@@ -4,6 +4,7 @@ import controller.Controller;
 import core.*;
 import entity.action.Action;
 import entity.effect.Effect;
+import entity.effect.Sick;
 import game.state.State;
 import gfx.AnimationManager;
 import gfx.SpriteLibrary;
@@ -205,5 +206,15 @@ public abstract class MovingEntity extends GameObject {
         positionWithYApplied.applyY(motion);
 
         return CollisionBox.of(positionWithYApplied, collisionBoxSize).collidesWith(otherBox);
+    }
+
+    /**
+     * Get whether or not a moving entity is affected by a effect.
+     * The reason this is "clazz" and not "class" is because "class" is a Java keyword, and will throw an error if we try to use it as a parameter.
+     * @param clazz The effect to check.
+     */
+    public boolean isAffectedBy(Class<?> clazz) {
+        return effects.stream()
+                .anyMatch(clazz::isInstance);
     }
 }
