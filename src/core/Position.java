@@ -119,4 +119,13 @@ public class Position {
     public void applyY(Motion motion) {
         x += motion.getVector().getY();
     }
+
+    /**
+     * Add a Position to a existing Position
+     * @param position The position to add
+     */
+    public void add(Position position) {
+        x += position.getX();
+        y += position.getY();
+    }
 }

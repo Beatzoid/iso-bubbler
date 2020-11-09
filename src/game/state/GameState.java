@@ -5,6 +5,7 @@ import controller.PlayerController;
 import core.Size;
 import entity.NPC;
 import entity.Player;
+import entity.SelectionCircle;
 import entity.effect.Sick;
 import game.ui.UIGameTime;
 import game.ui.UISicknessStats;
@@ -40,6 +41,10 @@ public class GameState extends State {
         final Player player = new Player(new PlayerController(input), spriteLibrary);
         gameObjects.add(player);
         camera.focusOn(player);
+
+        SelectionCircle circle = new SelectionCircle();
+        circle.setParent(player);
+        gameObjects.add(circle);
 
         initializeNPCs(200);
         makeNumberOfNPCsSick(10);

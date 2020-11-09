@@ -8,8 +8,11 @@ import game.state.State;
 import java.awt.*;
 
 public abstract class GameObject {
+
     protected Position position;
     protected Size size;
+
+    protected GameObject parent;
 
     /**
      * The GameObject class manages all GameObjects
@@ -22,13 +25,21 @@ public abstract class GameObject {
     public abstract void update(State state);
     public abstract Image getSprite();
     public abstract CollisionBox getCollisionBox();
-    public abstract boolean collidesWith(GameObject other);
+    public boolean collidesWith(GameObject other) {
+        return getCollisionBox().collidesWith(other.getCollisionBox());
+    };
 
     /**
      * Return the position
      */
     public Position getPosition() {
-        return position;
+        Position finalPosition = Position.copyOf(position);
+
+        if (parent != null) {
+            finalPosition.add(parent.getPosition());
+        }
+
+        return finalPosition;
     }
 
     /**
@@ -44,5 +55,13 @@ public abstract class GameObject {
      */
     public Size getSize() {
         return size;
+    }
+
+    /**
+     * Set the parent
+     * @param parent New parent
+     */
+    public void setParent(GameObject parent) {
+        this.parent = parent;
     }
 }
