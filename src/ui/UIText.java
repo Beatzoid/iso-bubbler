@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class UIText extends UIComponent {
 
-    private final String text;
+    private String text;
     private final int fontSize;
     private final int fontStyle;
     private String fontFamily;
@@ -83,13 +83,25 @@ public class UIText extends UIComponent {
 
     private void calculateSize() {
         FontMetrics fontMetrics = new Canvas().getFontMetrics(font);
-        size = new Size(
-                fontMetrics.stringWidth(text) + padding.getHorizontal(),
-                fontMetrics.getHeight() + padding.getVertical()
-        );
+        int width = fontMetrics.stringWidth(text) + padding.getHorizontal();
+        int height = fontMetrics.getHeight() + padding.getVertical();
+
+        if (dropShadow) {
+            width += dropShadowOffset;
+        }
+
+        size = new Size(width, height);
     }
 
     private void createFont() {
         font = new Font(fontFamily, fontStyle, fontSize);
+    }
+
+    /**
+     * Set the text
+     * @param text The new text
+     */
+    public void setText(String text) {
+        this.text = text;
     }
 }

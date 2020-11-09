@@ -6,6 +6,7 @@ import core.Size;
 import entity.NPC;
 import entity.Player;
 import entity.effect.Sick;
+import game.ui.UIGameTime;
 import input.Input;
 import map.GameMap;
 import ui.*;
@@ -30,20 +31,7 @@ public class GameState extends State {
     }
 
     private void initializeUI(Size windowSize) {
-        UIContainer container = new VerticalContainer(windowSize);
-        container.setPadding(new Spacing(5));
-        container.setBackgroundColor(new Color(0, 0, 0, 0   ));
-
-        UIContainer containerEnd = new VerticalContainer(windowSize);
-        containerEnd.setPadding(new Spacing(5));
-        containerEnd.setBackgroundColor(new Color(0, 0, 0, 0   ));
-        containerEnd.setAlignment(new Alignment(Alignment.Position.END, Alignment.Position.START));
-
-        container.addUIComponent(new UIText("Left!"));
-        containerEnd.addUIComponent(new UIText("Right!"));
-
-        uiContainers.add(container);
-        uiContainers.add(containerEnd);
+       uiContainers.add(new UIGameTime(windowSize));
     }
 
     private void initializeCharacters() {
