@@ -3,7 +3,7 @@ import input.Input;
 
 import java.awt.event.KeyEvent;
 
-public class PlayerController implements Controller {
+public class PlayerController implements EntityController {
 
     /**
      * The input
@@ -24,21 +24,21 @@ public class PlayerController implements Controller {
 
     @Override
     public boolean isRequestingUp() {
-        return input.isPressed(KeyEvent.VK_UP);
+        return input.isCurrentlyPressed(KeyEvent.VK_UP);
     }
 
     @Override
     public boolean isRequestingDown() {
-        return input.isPressed(KeyEvent.VK_DOWN);
+        return input.isCurrentlyPressed(KeyEvent.VK_DOWN);
     }
 
     @Override
     public boolean isRequestingLeft() {
-        return input.isPressed(KeyEvent.VK_LEFT);
+        return input.isCurrentlyPressed(KeyEvent.VK_LEFT);
     }
 
     @Override
     public boolean isRequestingRight() {
-        return input.isPressed(KeyEvent.VK_RIGHT);
+        return input.isCurrentlyPressed(KeyEvent.VK_RIGHT);
     }
 }

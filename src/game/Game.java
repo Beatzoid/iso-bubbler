@@ -1,5 +1,6 @@
 package game;
 
+import controller.GameController;
 import core.Size;
 import display.Display;
 import game.settings.GameSettings;
@@ -13,8 +14,9 @@ public class Game {
 
     private final Display display;
     private final Input input;
-    private State state;
-    private GameSettings settings;
+    private final State state;
+    private final GameSettings settings;
+    private GameController gameController;
 
     /**
      * The Game class handles making a new input, display, and state.
@@ -28,15 +30,15 @@ public class Game {
         display = new Display(width, height, input);
         state = new GameState(new Size(width, height), input);
         settings = new GameSettings(false);
+        gameController = new GameController(input);
     }
 
     /**
-     * Update the state
-     *
-     * @see game.state.State
+     * Update the Game
      */
     public void update() {
         state.update();
+        gameController.update(this);
     }
 
     /**
@@ -48,4 +50,10 @@ public class Game {
         display.render(state, settings.isDebugMode());
     }
 
+    /**
+     * Get the game settings
+     */
+    public GameSettings getSettings() {
+        return settings;
+    }
 }

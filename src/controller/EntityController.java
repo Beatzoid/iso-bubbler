@@ -1,6 +1,6 @@
 package controller;
 
-public interface Controller {
+public interface EntityController {
 
     boolean isRequestingUp();
     boolean isRequestingDown();

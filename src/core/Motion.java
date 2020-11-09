@@ -1,6 +1,6 @@
 package core;
 
-import controller.Controller;
+import controller.EntityController;
 
 public class Motion {
 
@@ -18,25 +18,25 @@ public class Motion {
 
     /**
      * Update the motion for a controller
-     * @param controller The controller to update the speed
+     * @param entityController The controller to update the speed
      */
-    public void update(Controller controller) {
+    public void update(EntityController entityController) {
         int deltaX = 0;
         int deltaY = 0;
 
-        if(controller.isRequestingUp()) {
+        if(entityController.isRequestingUp()) {
             deltaY--;
         }
 
-        if(controller.isRequestingDown()) {
+        if(entityController.isRequestingDown()) {
             deltaY++;
         }
 
-        if(controller.isRequestingLeft()) {
+        if(entityController.isRequestingLeft()) {
             deltaX--;
         }
 
-        if(controller.isRequestingRight()) {
+        if(entityController.isRequestingRight()) {
             deltaX++;
         }
 

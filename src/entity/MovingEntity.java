@@ -1,10 +1,9 @@
 package entity;
 
-import controller.Controller;
+import controller.EntityController;
 import core.*;
 import entity.action.Action;
 import entity.effect.Effect;
-import entity.effect.Sick;
 import game.state.State;
 import gfx.AnimationManager;
 import gfx.SpriteLibrary;
@@ -16,7 +15,7 @@ import java.util.Optional;
 
 public abstract class MovingEntity extends GameObject {
 
-    protected Controller controller;
+    protected EntityController entityController;
     protected Motion motion;
     protected AnimationManager animationManager;
     protected Direction direction;
@@ -28,16 +27,16 @@ public abstract class MovingEntity extends GameObject {
 
     /**
      * The MovingEntity class manages all MovingEntities and extends the GameObject class
-     * @param controller The controller
+     * @param entityController The controller
      * @param spriteLibrary The SpriteLibrary
      *
      * @see GameObject
-     * @see Controller
+     * @see EntityController
      * @see SpriteLibrary
      */
-    public MovingEntity(Controller controller, SpriteLibrary spriteLibrary) {
+    public MovingEntity(EntityController entityController, SpriteLibrary spriteLibrary) {
         super();
-        this.controller = controller;
+        this.entityController = entityController;
         this.motion = new Motion(2);
         this.direction = Direction.S;
         this.animationManager = new AnimationManager(spriteLibrary.getUnit("matt"));
@@ -74,7 +73,7 @@ public abstract class MovingEntity extends GameObject {
 
     private void handleMotion() {
         if (action.isEmpty()) {
-            motion.update(controller);
+            motion.update(entityController);
         } else {
             motion.stop(true, true);
         }
@@ -144,8 +143,8 @@ public abstract class MovingEntity extends GameObject {
     /**
      * Get the controller
      */
-    public Controller getController() {
-        return controller;
+    public EntityController getController() {
+        return entityController;
     }
 
     /**
