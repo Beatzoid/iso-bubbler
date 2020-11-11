@@ -12,6 +12,7 @@ public abstract class GameObject {
 
     protected Position position;
     protected Position renderOffset;
+    protected Position collisionBoxOffset;
     protected Size size;
 
     protected int renderOrder;
@@ -25,6 +26,7 @@ public abstract class GameObject {
         position = new Position(0, 0);
         size = new Size(64, 64);
         renderOffset = new Position(0, 0);
+        collisionBoxOffset = new Position(0, 0);
         renderOrder = 5;
     }
 

@@ -128,4 +128,13 @@ public class Position {
         x += position.getX();
         y += position.getY();
     }
+
+    /**
+     * Subtract a Position to a existing Position
+     * @param position The position to subtract
+     */
+    public void subtract(Position position) {
+        x -= position.getX();
+        y -= position.getY();
+    }
 }
