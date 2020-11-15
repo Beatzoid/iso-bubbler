@@ -12,6 +12,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Vector;
 
 public abstract class MovingEntity extends GameObject {
 
@@ -22,6 +23,8 @@ public abstract class MovingEntity extends GameObject {
     protected List<Effect> effects;
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     protected Optional<Action> action;
+
+    protected Vector2D directionVector;
 
     protected Size collisionBoxSize;
 
@@ -39,6 +42,7 @@ public abstract class MovingEntity extends GameObject {
         this.entityController = entityController;
         this.motion = new Motion(2);
         this.direction = Direction.S;
+        this.directionVector = new Vector2D(0, 0);
         this.animationManager = new AnimationManager(spriteLibrary.getUnit("matt"));
         effects = new ArrayList<>();
         action = Optional.empty();
@@ -111,6 +115,7 @@ public abstract class MovingEntity extends GameObject {
     private void manageDirection() {
         if (motion.isMoving()) {
             this.direction = Direction.fromMotion(motion);
+            this.directionVector = motion.getDirection();
         }
     }
 
@@ -143,15 +148,6 @@ public abstract class MovingEntity extends GameObject {
      */
     public EntityController getController() {
         return entityController;
-    }
-
-    /**
-     * Multiply the speed
-     * @param multiplier How much to multiply the speed by
-     */
-    @SuppressWarnings("unused")
-    public void multiplySpeed(double multiplier) {
-        motion.multiply(multiplier);
     }
 
     /**
@@ -215,5 +211,16 @@ public abstract class MovingEntity extends GameObject {
     public boolean isAffectedBy(Class<?> clazz) {
         return effects.stream()
                 .anyMatch(clazz::isInstance);
+    }
+
+    /**
+     * Get if the entity is facing a position
+     * @param other The Position to check
+     */
+    public boolean isFacing(Position other) {
+        Vector2D direction = Vector2D.directionBetweenPositions(other, getPosition());
+        double dotProduct = Vector2D.dotProduct(direction, directionVector);
+
+        return dotProduct > 0;
     }
 }

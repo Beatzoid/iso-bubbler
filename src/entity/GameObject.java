@@ -86,4 +86,11 @@ public abstract class GameObject {
     public int getRenderOrder() {
         return renderOrder;
     }
+
+    /**
+     * Clear the parent of the GameObject
+     */
+    protected void clearParent() {
+        parent = null;
+    }
 }

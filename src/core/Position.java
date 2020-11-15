@@ -137,4 +137,15 @@ public class Position {
         x -= position.getX();
         y -= position.getY();
     }
+
+    /**
+     * Get the distance between two points
+     * @param other The Position to check
+     */
+    public double distanceTo(Position other) {
+        double deltaX = this.getX() - other.getX();
+        double deltaY = this.getY() - other.getY();
+
+        return Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
 }
