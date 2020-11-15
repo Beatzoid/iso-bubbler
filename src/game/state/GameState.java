@@ -6,14 +6,11 @@ import core.Size;
 import entity.NPC;
 import entity.Player;
 import entity.SelectionCircle;
-import entity.effect.Sick;
+import entity.humanoid.effect.Sick;
 import game.ui.UIGameTime;
 import game.ui.UISicknessStats;
 import input.Input;
 import map.GameMap;
-import ui.*;
-
-import java.awt.*;
 
 public class GameState extends State {
 

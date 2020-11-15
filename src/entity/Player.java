@@ -1,6 +1,7 @@
 package entity;
 
 import controller.EntityController;
+import entity.humanoid.Humanoid;
 import game.Game;
 import game.state.State;
 import gfx.SpriteLibrary;
@@ -8,7 +9,7 @@ import gfx.SpriteLibrary;
 import java.util.Comparator;
 import java.util.Optional;
 
-public class Player extends MovingEntity {
+public class Player extends Humanoid {
 
     private NPC target;
     private double targetRange;
@@ -59,10 +60,5 @@ public class Player extends MovingEntity {
     }
 
     @Override
-    protected void handleCollision(GameObject other) {
-        if (other instanceof NPC) {
-            NPC npc = (NPC) other;
-            npc.clearEffects();
-        }
-    }
+    protected void handleCollision(GameObject other) {}
 }

@@ -18,7 +18,7 @@ public class Motion {
 
     /**
      * Update the motion for a controller
-     * @param entityController The controller to update the speed
+     * @param entityController The controller to update
      */
     public void update(EntityController entityController) {
         int deltaX = 0;

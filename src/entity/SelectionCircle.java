@@ -11,15 +11,15 @@ import java.awt.image.BufferedImage;
 
 public class SelectionCircle extends GameObject {
 
-    private Color color;
+    private final Color color;
     private BufferedImage sprite;
 
     /**
      * The SelectionCircle class manages selection circles for entities
      */
     public SelectionCircle() {
-        color = Color.ORANGE;
-        size = new Size(32, 16);
+        color = new Color(0, 255, 255);
+        size = new Size(20, 16);
         renderOffset = new Position(size.getWidth() / 2, size.getHeight());
         collisionBoxOffset = renderOffset;
         renderOrder = 4;
@@ -31,7 +31,8 @@ public class SelectionCircle extends GameObject {
         Graphics2D graphics = sprite.createGraphics();
 
         graphics.setColor(color);
-        graphics.fillOval(0, 0, size.getWidth(), size.getHeight());
+        graphics.setStroke(new BasicStroke(2));
+        graphics.drawOval(0, 0, size.getWidth(), size.getHeight());
 
         graphics.dispose();
     }

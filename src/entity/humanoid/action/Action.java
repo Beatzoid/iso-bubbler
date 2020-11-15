@@ -1,6 +1,7 @@
-package entity.action;
+package entity.humanoid.action;
 
 import entity.MovingEntity;
+import entity.humanoid.Humanoid;
 import game.state.State;
 
 /**
@@ -11,12 +12,12 @@ public abstract class Action {
     /**
      * The update function updates the action
      * @param state The state
-     * @param entity The entity
+     * @param humanoid The humanoid
      *
      * @see State
      * @see MovingEntity
      */
-    public abstract void update(State state, MovingEntity entity);
+    public abstract void update(State state, Humanoid humanoid);
 
     /**
      * Whether or not the action is done
