@@ -9,6 +9,15 @@ import game.state.State;
  */
 public abstract class Action {
 
+    protected boolean interruptable;
+
+    /**
+     * The Action class manages Actions for NPC's and Players
+     */
+    public Action() {
+        interruptable = true;
+    }
+
     /**
      * The update function updates the action
      * @param state The state
@@ -28,4 +37,11 @@ public abstract class Action {
      * Get the animation name
      */
     public abstract String getAnimationName();
+
+    /**
+     * Whether or not the Action is interruptable
+     */
+    public boolean isInterruptable() {
+        return interruptable;
+    }
 }

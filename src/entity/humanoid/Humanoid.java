@@ -92,6 +92,7 @@ public class Humanoid extends MovingEntity {
      * @param action The action to perform
      */
     public void perform(Action action) {
+        if(this.action.isPresent() && !this.action.get().isInterruptable()) return;
         this.action = Optional.of(action);
     }
 

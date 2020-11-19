@@ -15,6 +15,7 @@ public class AnimationManager {
     private int currentFrameTime;
     private int frameIndex;
     private int directionIndex;
+    private boolean looping;
 
     /**
      * The AnimationManager manages animations
@@ -23,11 +24,24 @@ public class AnimationManager {
      * @see SpriteSet
      */
     public AnimationManager(SpriteSet spriteSet) {
+        this(spriteSet, true);
+    }
+
+    /**
+     * The AnimationManager manages animations
+     * @param spriteSet The SpriteSet to use
+     * @param looping Whether or not to loop the animation
+     *
+     * @see SpriteSet
+     */
+    public AnimationManager(SpriteSet spriteSet, boolean looping) {
         this.spriteSet = spriteSet;
         this.updatesPerFrame = 20;
         this.frameIndex = 0;
         this.currentFrameTime = 0;
         this.directionIndex = 0;
+        this.looping = looping;
+
         currentAnimationName = "";
         playAnimation("stand");
     }
@@ -58,8 +72,9 @@ public class AnimationManager {
             currentFrameTime = 0;
             frameIndex++;
 
-            if (frameIndex >= currentAnimationSheet.getWidth() / Game.SPRITE_SIZE) {
-                frameIndex = 0;
+            final int animationSize = currentAnimationSheet.getWidth() / Game.SPRITE_SIZE;
+            if (frameIndex >= animationSize) {
+                frameIndex = looping ? 0 : animationSize - 1;
             }
         }
     }
@@ -70,7 +85,7 @@ public class AnimationManager {
      */
     public void playAnimation(String name) {
         if (!name.equals(currentAnimationName)) {
-            this.currentAnimationSheet = (BufferedImage) spriteSet.get(name);
+            this.currentAnimationSheet = (BufferedImage) spriteSet.getOrGetDefault(name);
             currentAnimationName = name;
             frameIndex = 0;
         }

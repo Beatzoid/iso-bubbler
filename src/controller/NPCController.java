@@ -21,6 +21,11 @@ public class NPCController implements EntityController {
     }
 
     @Override
+    public boolean isRequestingAction() {
+        return false;
+    }
+
+    @Override
     public boolean isRequestingDown() {
         return down;
     }

@@ -16,6 +16,17 @@ public class SpriteSet {
     }
 
     /**
+     * The SpriteSet class manages the SpriteSets
+     * @param image The image to use
+     *
+     * @see Image
+     */
+    public SpriteSet(Image image) {
+        this.animationSheets = new HashMap<>();
+        addSheet("default", image);
+    }
+
+    /**
      * Add a sheet
      * @param name The name of the sheet to add
      * @param animationSheet The animation sheet
@@ -27,10 +38,13 @@ public class SpriteSet {
     }
 
     /**
-     * Get a animation sheet
+     * Get an animation sheet
      * @param name The name of the animation sheet to get
      */
-    public Image get(String name) {
-        return animationSheets.get(name);
+    public Image getOrGetDefault(String name) {
+        if (animationSheets.containsKey(name)) {
+            return animationSheets.get(name);
+        }
+        return animationSheets.get("default");
     }
 }

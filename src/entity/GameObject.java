@@ -66,10 +66,11 @@ public abstract class GameObject {
     }
 
     /**
-     * Set the parent
-     * @param parent New parent
+     * Parent a GameObject
+     * @param parent The GameObject to parent
      */
-    public void setParent(GameObject parent) {
+    public void parent(GameObject parent) {
+        this.position = new Position(0, 0);
         this.parent = parent;
     }
 
@@ -92,5 +93,20 @@ public abstract class GameObject {
      */
     protected void clearParent() {
         parent = null;
+    }
+
+    /**
+     * Get the render offset
+     */
+    protected Position getRenderOffset() {
+        return renderOffset;
+    }
+
+    /**
+     * Set the render order
+     * @param renderOrder The new render order
+     */
+    public void setRenderOrder(int renderOrder) {
+        this.renderOrder = renderOrder;
     }
 }

@@ -35,8 +35,7 @@ public abstract class MovingEntity extends GameObject {
         this.direction = Direction.S;
         this.directionVector = new Vector2D(0, 0);
         this.animationManager = new AnimationManager(spriteLibrary.getSpriteSet("matt"));
-
-
+        this.collisionBoxSize = new Size(size.getWidth(), size.getHeight());
     }
 
     /**
