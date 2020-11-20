@@ -84,4 +84,13 @@ public class Vector2D {
     public double getY() {
         return y;
     }
+
+    /**
+     * Add a Vector2D to the existing Vector2D
+     * @param vector The Vector2D to add
+     */
+    public void add(Vector2D vector) {
+        x += vector.getX();
+        y += vector.getY();
+    }
 }

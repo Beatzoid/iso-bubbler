@@ -1,13 +1,15 @@
 package entity;
 
 import controller.NPCController;
+import core.Direction;
+import core.Vector2D;
 import gfx.AnimationManager;
 import gfx.SpriteLibrary;
 import gfx.SpriteSet;
 
 public class Bubble extends MovingEntity {
 
-    private NPCController controller;
+    private boolean halted;
 
     /**
      * The Bubble class manages bubbles
@@ -20,7 +22,6 @@ public class Bubble extends MovingEntity {
      */
     public Bubble(NPCController npcController, SpriteLibrary spriteLibrary) {
         super(npcController, spriteLibrary);
-        this.controller = npcController;
 
         this.animationManager = new AnimationManager(new SpriteSet(spriteLibrary.getImage("bubble")), false);
     }
@@ -30,12 +31,24 @@ public class Bubble extends MovingEntity {
 
     @Override
     protected void handleMotion() {
-        motion.update(controller);
+        if(!halted) {
+            motion.add(new Vector2D(0, -0.5));
+        }
+
+        halted = false;
+        direction = Direction.S;
     }
 
     @Override
     protected String decideAnimation() {
         return "default";
+    }
+
+    /**
+     * Halt the Bubble
+     */
+    public void halt() {
+        halted = true;
     }
 
     /**

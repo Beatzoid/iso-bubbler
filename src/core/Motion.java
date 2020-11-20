@@ -89,4 +89,12 @@ public class Motion {
 
         return direction;
     }
+
+    /**
+     * Add a Vector2D to the motion
+     * @param vector The Vector2D to add
+     */
+    public void add(Vector2D vector) {
+        this.vector.add(vector);
+    }
 }

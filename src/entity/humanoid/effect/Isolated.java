@@ -1,8 +1,8 @@
 package entity.humanoid.effect;
 
-public class Untargetable extends Effect {
+public class Isolated extends Effect {
 
-    public Untargetable() {
+    public Isolated() {
         super(Integer.MAX_VALUE);
     }
 }

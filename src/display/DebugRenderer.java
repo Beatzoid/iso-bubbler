@@ -2,9 +2,12 @@ package display;
 
 import core.CollisionBox;
 import entity.GameObject;
+import entity.humanoid.Humanoid;
 import game.state.State;
+import ui.UIText;
 
 import java.awt.*;
+import java.util.stream.Collectors;
 
 public class DebugRenderer {
 
@@ -23,6 +26,26 @@ public class DebugRenderer {
                 .filter(camera::isInView)
                 .map(GameObject::getCollisionBox)
                 .forEach(collisionBox -> drawCollisionBox(collisionBox, graphics, camera));
+
+        drawEffects(state, graphics);
+    }
+
+    private void drawEffects(State state, Graphics graphics) {
+        Camera camera = state.getCamera();
+        state.getGameObjectsOfClass(Humanoid.class).stream()
+                .forEach(humanoid -> {
+                    UIText effectsText = new UIText(
+                            humanoid.getEffects().stream().map(effect -> effect.getClass().getSimpleName()).collect(Collectors.joining(","))
+                    );
+                    effectsText.update(state);
+
+                    graphics.drawImage(
+                            effectsText.getSprite(),
+                            humanoid.getPosition().intX() - camera.getPosition().intX(),
+                            humanoid.getPosition().intY() - camera.getPosition().intY(),
+                            null
+                    );
+                });
     }
 
     private void drawCollisionBox(CollisionBox collisionBox, Graphics graphics, Camera camera) {
