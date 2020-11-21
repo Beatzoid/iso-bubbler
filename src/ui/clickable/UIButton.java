@@ -1,7 +1,7 @@
 package ui.clickable;
 
 import core.Size;
-import game.state.State;
+import state.State;
 import ui.UIContainer;
 import ui.UIText;
 import ui.VerticalContainer;

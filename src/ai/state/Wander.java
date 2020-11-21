@@ -4,7 +4,7 @@ import ai.AITransition;
 import controller.NPCController;
 import core.Position;
 import entity.NPC;
-import game.state.State;
+import state.State;
 
 import java.util.ArrayList;
 import java.util.List;

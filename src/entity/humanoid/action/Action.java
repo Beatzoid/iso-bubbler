@@ -2,7 +2,7 @@ package entity.humanoid.action;
 
 import entity.MovingEntity;
 import entity.humanoid.Humanoid;
-import game.state.State;
+import state.State;
 
 /**
  * The Action class manages actions for entities

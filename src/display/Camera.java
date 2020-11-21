@@ -4,7 +4,7 @@ import core.Position;
 import core.Size;
 import entity.GameObject;
 import game.Game;
-import game.state.State;
+import state.State;
 
 import java.awt.*;
 import java.util.Optional;

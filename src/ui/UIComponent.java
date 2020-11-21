@@ -2,7 +2,7 @@ package ui;
 
 import core.Position;
 import core.Size;
-import game.state.State;
+import state.State;
 
 import java.awt.*;
 

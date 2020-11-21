@@ -1,9 +1,8 @@
-package game.state;
+package state;
 
 import core.Position;
 import core.Size;
 import display.Camera;
-import entity.Bubble;
 import entity.GameObject;
 import game.Time;
 import gfx.SpriteLibrary;
@@ -11,7 +10,6 @@ import input.Input;
 import map.GameMap;
 import ui.UIContainer;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;

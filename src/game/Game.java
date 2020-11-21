@@ -4,8 +4,8 @@ import controller.GameController;
 import core.Size;
 import display.Display;
 import game.settings.GameSettings;
-import game.state.GameState;
-import game.state.State;
+import state.game.GameState;
+import state.State;
 import input.Input;
 
 public class Game {

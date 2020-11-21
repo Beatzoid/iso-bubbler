@@ -5,7 +5,7 @@ import entity.Bubble;
 import entity.humanoid.Humanoid;
 import entity.humanoid.effect.Isolated;
 import game.GameLoop;
-import game.state.State;
+import state.State;
 
 public class BlowBubble extends Action {
 
