@@ -13,7 +13,7 @@ public class UIButton extends UIClickable {
     private final UIContainer container;
     private final UIText label;
 
-    private final Runnable clickEvent;
+    private final ClickAction clickAction;
 
     /**
      * The UIButton class displays and handles buttons on the screen
@@ -22,9 +22,9 @@ public class UIButton extends UIClickable {
      *
      * @see Runnable
      */
-    public UIButton(String label, Runnable clickEvent) {
+    public UIButton(String label, ClickAction clickEvent) {
         this.label = new UIText(label);
-        this.clickEvent = clickEvent;
+        this.clickAction = clickEvent;
 
         container = new VerticalContainer(new Size(0, 0));
         container.addUIComponent(this.label);
@@ -51,8 +51,8 @@ public class UIButton extends UIClickable {
     }
 
     @Override
-    protected void onClick() {
-        clickEvent.run();
+    protected void onClick(State state) {
+        clickAction.execute(state);
     }
 
     @Override

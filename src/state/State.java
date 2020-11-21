@@ -4,6 +4,7 @@ import core.Position;
 import core.Size;
 import display.Camera;
 import entity.GameObject;
+import game.Game;
 import game.Time;
 import gfx.SpriteLibrary;
 import input.Input;
@@ -25,8 +26,12 @@ public abstract class State {
     protected Camera camera;
     protected Time time;
 
+    protected Size windowSize;
+
+    private State nextState;
+
     /**
-     * The State class manages a bunch of different states
+     * The State class manages State of different classes
      * @param windowSize The windowSize
      * @param input The input
      *
@@ -34,6 +39,7 @@ public abstract class State {
      * @see Input
      */
     public State(Size windowSize, Input input) {
+        this.windowSize = windowSize;
         this.input = input;
         gameObjects = new ArrayList<>();
         uiContainers = new ArrayList<>();
@@ -42,13 +48,17 @@ public abstract class State {
         time = new Time();
     }
 
-    public void update() {
+    public void update(Game game) {
         time.update();
         sortObjectsByPosition();
         updateGameObjects();
-        uiContainers.forEach(uiContainer -> uiContainer.update(this));
+        List.copyOf(uiContainers).forEach(uiContainer -> uiContainer.update(this));
         camera.update(this);
         handleMouseInput();
+
+        if (nextState != null) {
+            game.enterState(nextState);
+        }
     }
 
     private void handleMouseInput() {
@@ -154,5 +164,13 @@ public abstract class State {
      */
     public Input getInput() {
         return input;
+    }
+
+    /**
+     * Set the next state
+     * @param nextState The next state
+     */
+    public void setNextState(State nextState) {
+        this.nextState = nextState;
     }
 }

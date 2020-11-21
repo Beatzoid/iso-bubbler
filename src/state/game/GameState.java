@@ -9,11 +9,13 @@ import entity.Player;
 import entity.SelectionCircle;
 import entity.humanoid.effect.Isolated;
 import entity.humanoid.effect.Sick;
+import game.Game;
 import state.game.ui.UIGameTime;
 import state.game.ui.UISicknessStats;
 import input.Input;
 import map.GameMap;
 import state.State;
+import state.menu.MenuState;
 import ui.Alignment;
 import ui.UIText;
 import ui.VerticalContainer;
@@ -85,8 +87,8 @@ public class GameState extends State {
     }
 
     @Override
-    public void update() {
-        super.update();
+    public void update(Game game) {
+        super.update(game);
 
         if (playing) {
             if (victoryConditions.stream().allMatch(Condition::isMet)) {
@@ -113,7 +115,8 @@ public class GameState extends State {
         VerticalContainer winContainer = new VerticalContainer(camera.getSize());
         winContainer.setAlignment(new Alignment(Alignment.Position.CENTER, Alignment.Position.CENTER));
         winContainer.setBackgroundColor(Color.DARK_GRAY);
-        winContainer.addUIComponent(new UIButton("Victory!", () -> System.out.println("Victory button pressed")));
+        winContainer.addUIComponent(new UIButton("Menu", (state) -> state.setNextState(new MenuState(windowSize, input))));
+        winContainer.addUIComponent(new UIButton("Exit", (state) -> System.exit(0)));
         uiContainers.add(winContainer);
     }
 
