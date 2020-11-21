@@ -1,4 +1,4 @@
-# Java 2D Game
+# Iso Bubbler
 
 A 2D Game made using Java
 
@@ -14,4 +14,4 @@ the healthy people get sick. You are also able to get infected too, so you have 
 ---
 
 ### Credit
-Credit goes to [this](https://www.youtube.com/playlist?list=PLfHzvwt1lruOl0h6nn72545ISqh6Y1aPb) series
+Credit goes to [this](https://www.youtube.com/playlist?list=PLfHzvwt1lruOl0h6nn72545ISqh6Y1aPb) series (very underrated)
