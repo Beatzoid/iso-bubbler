@@ -1,6 +1,6 @@
 package audio;
 
-import game.settings.GameSettings;
+import game.settings.AudioSettings;
 
 import javax.sound.sampled.Clip;
 
@@ -16,7 +16,7 @@ public class MusicClip extends AudioClip {
     }
 
     @Override
-    protected float getVolume(GameSettings gameSettings) {
-        return gameSettings.getMusicVolume();
+    protected float getVolume(AudioSettings audioSettings) {
+        return audioSettings.getMusicVolume();
     }
 }

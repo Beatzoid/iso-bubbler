@@ -4,8 +4,7 @@ public class GameSettings {
 
     private boolean debugMode;
     private double gameSpeedMultiplier;
-    private float musicVolume;
-    private float soundVolume;
+    private AudioSettings audioSettings;
 
     /**
      * The GameSettings class manages settings for the game.
@@ -14,8 +13,7 @@ public class GameSettings {
     public GameSettings(boolean debugMode) {
         this.debugMode = debugMode;
         gameSpeedMultiplier = 1;
-        musicVolume = 0;
-        soundVolume = 0;
+       audioSettings = new AudioSettings();
     }
 
     /**
@@ -54,32 +52,9 @@ public class GameSettings {
     }
 
     /**
-     * Get the music volume
+     * Get the audio settings
      */
-    public float getMusicVolume() {
-        return musicVolume;
-    }
-
-    /**
-     * Set the music volume
-     * @param musicVolume The new music volume
-     */
-    public void setMusicVolume(float musicVolume) {
-        this.musicVolume = musicVolume;
-    }
-
-    /**
-     * Get the sound volume
-     */
-    public float getSoundVolume() {
-        return soundVolume;
-    }
-
-    /**
-     * Set the sound volume
-     * @param soundVolume The new sound volume
-     */
-    public void setSoundVolume(float soundVolume) {
-        this.soundVolume = soundVolume;
+    public AudioSettings getAudioSettings() {
+        return audioSettings;
     }
 }

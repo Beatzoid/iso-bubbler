@@ -1,6 +1,8 @@
 package state.menu;
 
 import core.Size;
+import game.Game;
+import game.settings.GameSettings;
 import input.Input;
 import map.GameMap;
 import state.State;
@@ -14,11 +16,15 @@ public class MenuState extends State {
      *
      * @param windowSize The windowSize
      * @param input      The input
+     * @param gameSettings The game settings
+     *
      * @see Size
      * @see Input
+     * @see GameSettings
      */
-    public MenuState(Size windowSize, Input input) {
-        super(windowSize, input);
+
+    public MenuState(Size windowSize, Input input, GameSettings gameSettings) {
+        super(windowSize, input, gameSettings);
         gameMap = new GameMap(new Size(20, 20), spriteLibrary);
 
         uiContainers.add(new UIMainMenu(windowSize));

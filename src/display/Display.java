@@ -22,7 +22,7 @@ public class Display extends JFrame {
      * @see Input
      */
     public Display(int width, int height, Input input) {
-        setTitle("My 2D game");
+        setTitle("Iso Bubbler");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         this.renderer = new Renderer();

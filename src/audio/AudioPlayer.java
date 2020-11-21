@@ -1,5 +1,6 @@
 package audio;
 
+import game.settings.AudioSettings;
 import game.settings.GameSettings;
 
 import javax.sound.sampled.*;
@@ -10,26 +11,23 @@ import java.util.List;
 
 public class AudioPlayer {
 
+    private AudioSettings audioSettings;
     private List<AudioClip> audioClips;
 
     /**
      * The AudioPlayer class manages playing audio
+     *
+     * @param audioSettings The audio settings
+     *
+     * @see AudioSettings
      */
-    public AudioPlayer() {
+    public AudioPlayer(AudioSettings audioSettings) {
+        this.audioSettings = audioSettings;
         audioClips = new ArrayList<>();
     }
 
-    /**
-     * Play music
-     * @param fileName The name of the music file
-     */
-    public void playMusic(String fileName) {
-        final Clip clip = getClip(fileName);
-        audioClips.add(new MusicClip(clip));
-    }
-
-    public void update(GameSettings gameSettings) {
-        audioClips.forEach(audioClip -> audioClip.update(gameSettings));
+    public void update() {
+        audioClips.forEach(audioClip -> audioClip.update(audioSettings));
 
         List.copyOf(audioClips).forEach(audioClip -> {
             if (audioClip.hasFinishedPlaying()) {
@@ -40,12 +38,25 @@ public class AudioPlayer {
     }
 
     /**
+     * Play music
+     * @param fileName The name of the music file
+     */
+    public void playMusic(String fileName) {
+        final Clip clip = getClip(fileName);
+        final MusicClip musicClip = new MusicClip(clip);
+        musicClip.setVolume(audioSettings);
+        audioClips.add(musicClip);
+    }
+
+    /**
      * Play a sound
      * @param fileName The name of the sound file
      */
     public void playSound(String fileName) {
         final Clip clip = getClip(fileName);
-        audioClips.add(new SoundClip(clip));
+        final SoundClip soundClip = new SoundClip(clip);
+        soundClip.setVolume(audioSettings);
+        audioClips.add(soundClip);
     }
 
 

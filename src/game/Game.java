@@ -28,8 +28,8 @@ public class Game {
     public Game(int width, int height) {
         input = new Input();
         display = new Display(width, height, input);
-        state = new MenuState(new Size(width, height), input);
         settings = new GameSettings(false);
+        state = new MenuState(new Size(width, height), input, settings);
         gameController = new GameController(input);
     }
 
