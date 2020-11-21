@@ -17,7 +17,9 @@ import map.GameMap;
 import ui.Alignment;
 import ui.UIText;
 import ui.VerticalContainer;
+import ui.clickable.UIButton;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +67,7 @@ public class GameState extends State {
         initializeNPCs(200);
         // 0 = Instant win
         // 25% or more of the total number of NPC's = Instant lose
-        makeNumberOfNPCsSick(10);
+        makeNumberOfNPCsSick(0);
     }
 
     private void makeNumberOfNPCsSick(int number) {
@@ -111,7 +113,8 @@ public class GameState extends State {
 
         VerticalContainer winContainer = new VerticalContainer(camera.getSize());
         winContainer.setAlignment(new Alignment(Alignment.Position.CENTER, Alignment.Position.CENTER));
-        winContainer.addUIComponent(new UIText("VICTORY!"));
+        winContainer.setBackgroundColor(Color.DARK_GRAY);
+        winContainer.addUIComponent(new UIButton("Victory!", () -> System.out.println("Victory button pressed")));
         uiContainers.add(winContainer);
     }
 

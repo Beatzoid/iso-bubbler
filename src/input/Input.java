@@ -47,7 +47,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
     }
 
     /**
-     * Get whether the mouse positon
+     * Get the mouse position
      */
     public Position getMousePosition() {
         return mousePosition;
