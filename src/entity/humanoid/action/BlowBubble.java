@@ -57,4 +57,9 @@ public class BlowBubble extends Action {
     public String getAnimationName() {
         return "blow";
     }
+
+    @Override
+    public String getSoundName() {
+        return "bubble.wav";
+    }
 }

@@ -1,8 +1,11 @@
 package entity;
 
 import controller.EntityController;
+import core.Position;
+import core.Vector2D;
 import entity.humanoid.Humanoid;
 import entity.humanoid.action.BlowBubble;
+import entity.humanoid.action.WalkInDirection;
 import entity.humanoid.effect.Isolated;
 import game.Game;
 import state.State;
@@ -31,6 +34,9 @@ public class Player extends Humanoid {
         super(entityController, spriteLibrary);
         this.selectionCircle = selectionCircle;
         this.targetRange = Game.SPRITE_SIZE;
+
+        setPosition(new Position(Game.SPRITE_SIZE * 5, 0));
+        perform(new WalkInDirection(new Vector2D(0, 1)));
     }
 
     @Override

@@ -7,14 +7,15 @@ import entity.GameObject;
 import entity.MovingEntity;
 import entity.humanoid.action.Action;
 import entity.humanoid.effect.Effect;
+import gfx.AnimationManager;
 import state.State;
 import gfx.SpriteLibrary;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Humanoid extends MovingEntity {
+
+    private static List<String> availableCharacters = new ArrayList<>(List.of("dave", "matt", "melissa", "roger"));
 
     protected List<Effect> effects;
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
@@ -35,9 +36,16 @@ public class Humanoid extends MovingEntity {
         effects = new ArrayList<>();
         action = Optional.empty();
 
+        this.animationManager = new AnimationManager(spriteLibrary.getSpriteSet(getRandomCharacter()));
+
         this.collisionBoxSize = new Size(16, 28);
         this.renderOffset = new Position(size.getWidth() / 2, size.getHeight() - 12);
         this.collisionBoxOffset = new Position(collisionBoxSize.getWidth() / 2, collisionBoxSize.getHeight());
+    }
+
+    private String getRandomCharacter() {
+        Collections.shuffle(availableCharacters);
+        return availableCharacters.get(0);
     }
 
     /**
@@ -74,11 +82,11 @@ public class Humanoid extends MovingEntity {
         return "stand";
     }
 
-    @SuppressWarnings("OptionalIsPresent")
     private void handleAction(State state) {
-        if (action.isPresent()) {
-            action.get().update(state, this);
-        }
+        action.ifPresent(value -> {
+            value.update(state, this);
+            value.playSound(state.getAudioPlayer());
+        });
     }
 
     protected void handleMotion() {
