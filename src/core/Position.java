@@ -130,7 +130,7 @@ public class Position {
     }
 
     /**
-     * Subtract a Position to a existing Position
+     * Subtract a Position from a existing Position
      * @param position The position to subtract
      */
     public void subtract(Position position) {
