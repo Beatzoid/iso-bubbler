@@ -182,4 +182,18 @@ public abstract class State {
     public GameSettings getGameSettings() {
         return gameSettings;
     }
+
+    /**
+     * Get the audio player
+     */
+    public AudioPlayer getAudioPlayer() {
+        return audioPlayer;
+    }
+
+    /**
+     * Clean up
+     */
+    public void cleanUp() {
+        audioPlayer.clear();
+    }
 }

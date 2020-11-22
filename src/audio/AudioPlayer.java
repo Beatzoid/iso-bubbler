@@ -1,7 +1,6 @@
 package audio;
 
 import game.settings.AudioSettings;
-import game.settings.GameSettings;
 
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -11,8 +10,8 @@ import java.util.List;
 
 public class AudioPlayer {
 
-    private AudioSettings audioSettings;
-    private List<AudioClip> audioClips;
+    private final AudioSettings audioSettings;
+    private final List<AudioClip> audioClips;
 
     /**
      * The AudioPlayer class manages playing audio
@@ -72,5 +71,13 @@ public class AudioPlayer {
         }
 
         return null;
+    }
+
+    /**
+     * Clear and cleanup the audio clips
+     */
+    public void clear() {
+        audioClips.forEach(AudioClip::cleanUp);
+        audioClips.clear();
     }
 }

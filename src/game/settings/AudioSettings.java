@@ -9,8 +9,8 @@ public class AudioSettings {
      * The AudioSettings class manages audio settings
      */
     public AudioSettings() {
-        musicVolume = 1;
-        soundVolume = 1;
+        musicVolume = 0.85f;
+        soundVolume = 0.80f;
     }
 
     /**
