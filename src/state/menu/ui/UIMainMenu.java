@@ -1,6 +1,7 @@
 package state.menu.ui;
 
 import core.Size;
+import state.editor.EditorState;
 import state.game.GameState;
 import state.menu.MenuState;
 import ui.Alignment;
@@ -22,6 +23,7 @@ public class UIMainMenu extends VerticalContainer {
         addUIComponent(new UIText("Iso Bubbler"));
         addUIComponent(new UIButton("Play", (state) -> state.setNextState(new GameState(windowSize, state.getInput(), state.getGameSettings()))));
         addUIComponent(new UIButton("Options", (state) -> ((MenuState)state).enterMenu(new UIOptionMenu(windowSize, state.getGameSettings()))));
+        addUIComponent(new UIButton("Editor", (state) -> state.setNextState(new EditorState(windowSize, state.getInput(), state.getGameSettings()))));
         addUIComponent(new UIButton("Exit", (state) -> System.exit(0)));
     }
 }

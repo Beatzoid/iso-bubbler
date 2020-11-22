@@ -59,6 +59,16 @@ public class Renderer {
                             y * Game.SPRITE_SIZE - camera.getPosition().intY(),
                             null
                     );
+
+                    if (state.getGameSettings().getRenderSettings().getShouldRenderGrid().getValue()) {
+                        graphics.setColor(Color.GRAY);
+                        graphics.drawRect(
+                                x * Game.SPRITE_SIZE - camera.getPosition().intX(),
+                                y * Game.SPRITE_SIZE - camera.getPosition().intY(),
+                                Game.SPRITE_SIZE,
+                                Game.SPRITE_SIZE
+                        );
+                    }
             }
         }
     }

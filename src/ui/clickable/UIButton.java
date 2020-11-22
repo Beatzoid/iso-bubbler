@@ -28,7 +28,7 @@ public class UIButton extends UIClickable {
 
         container = new VerticalContainer(new Size(0, 0));
         container.addUIComponent(this.label);
-        container.setFixedSize(new Size(150, 40));
+        container.setFixedSize(new Size(200, 40));
     }
 
     @Override

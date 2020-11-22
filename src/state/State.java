@@ -38,9 +38,11 @@ public abstract class State {
      * The State class manages State of different classes
      * @param windowSize The windowSize
      * @param input The input
+     * @param gameSettings The GameSettings
      *
      * @see Size
      * @see Input
+     * @see GameSettings
      */
     public State(Size windowSize, Input input, GameSettings gameSettings) {
         this.gameSettings = gameSettings;
