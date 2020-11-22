@@ -2,10 +2,12 @@ package state.editor.ui;
 
 import core.Size;
 import game.settings.RenderSettings;
+import map.GameMap;
 import ui.Alignment;
 import ui.UIText;
 import ui.VerticalContainer;
 import ui.clickable.UICheckbox;
+import ui.clickable.UIMinimap;
 
 public class UIRenderSettings extends VerticalContainer {
 
@@ -14,11 +16,14 @@ public class UIRenderSettings extends VerticalContainer {
      *
      * @param windowSize The window size
      * @param renderSettings The render settings
+     * @param gameMap The GameMap
      */
-    public UIRenderSettings(Size windowSize, RenderSettings renderSettings) {
+    public UIRenderSettings(Size windowSize, RenderSettings renderSettings, GameMap gameMap) {
         super(windowSize);
         setAlignment(new Alignment(Alignment.Position.END, Alignment.Position.START));
+        setCenterChildren(true);
 
+        addUIComponent(new UIMinimap(gameMap));
         addUIComponent(new UIText("Render settings"));
         addUIComponent(new UICheckbox("GRID", renderSettings.getShouldRenderGrid()));
     }

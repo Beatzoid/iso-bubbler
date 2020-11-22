@@ -9,6 +9,8 @@ import ui.UIText;
 import ui.VerticalContainer;
 import ui.clickable.UIButton;
 
+import java.awt.*;
+
 public class UIMainMenu extends VerticalContainer {
 
     /**
@@ -19,6 +21,8 @@ public class UIMainMenu extends VerticalContainer {
     public UIMainMenu(Size windowSize) {
         super(windowSize);
         alignment = new Alignment(Alignment.Position.CENTER, Alignment.Position.CENTER);
+        setBackgroundColor(Color.DARK_GRAY);
+        setCenterChildren(true);
 
         addUIComponent(new UIText("Iso Bubbler"));
         addUIComponent(new UIButton("Play", (state) -> state.setNextState(new GameState(windowSize, state.getInput(), state.getGameSettings()))));
