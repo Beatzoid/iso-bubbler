@@ -62,7 +62,7 @@ public class Game {
      * @param nextState The new state
      */
     public void enterState(State nextState) {
-        state.cleanUp();
         state = nextState;
+        state.cleanUp();
     }
 }

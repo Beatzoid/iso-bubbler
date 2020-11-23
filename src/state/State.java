@@ -173,7 +173,7 @@ public abstract class State {
      * Set the next state
      * @param nextState The next state
      */
-    public void setNextState(State nextState) {
+    public void setNextState(State nextState) {;
         this.nextState = nextState;
     }
 

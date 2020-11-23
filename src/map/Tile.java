@@ -10,12 +10,33 @@ public class Tile {
 
     /**
      * The Tile class handles loading and managing tiles
-     * @param spriteLibrary The spriteLibary to use
+     *
+     * @param spriteLibrary The spriteLibrary to use
      *
      * @see SpriteLibrary
      */
     public Tile(SpriteLibrary spriteLibrary) {
-        this.sprite = spriteLibrary.getImage("woodfloor");
+        this(spriteLibrary, "woodfloor");
+    }
+
+    /**
+     * The Tile class handles loading and managing tiles
+     *
+     * @param spriteLibrary The spriteLibrary to use
+     * @param tileName The name of the tile to use
+     *
+     * @see SpriteLibrary
+     */
+    public Tile(SpriteLibrary spriteLibrary, String tileName) {
+        this.sprite = spriteLibrary.getImage(tileName);
+    }
+
+    private Tile(Image sprite) {
+        this.sprite = sprite;
+    }
+
+    public static Tile copyOf(Tile tile) {
+        return new Tile(tile.getSprite());
     }
 
     /**
