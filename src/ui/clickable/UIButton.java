@@ -58,12 +58,15 @@ public class UIButton extends UIClickable {
     protected void onFocus(State state) {}
 
     @Override
-    protected void onDrag(State state) {}
+    public void onDrag(State state) {}
 
     @Override
-    protected void onClick(State state) {
+    public void onClick(State state) {
         state.getAudioPlayer().playSound("button.wav");
-        clickAction.execute(state);
+
+        if (hasFocus) {
+            clickAction.execute(state);
+        }
     }
 
     @Override

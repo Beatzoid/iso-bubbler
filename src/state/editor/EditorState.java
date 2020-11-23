@@ -23,7 +23,7 @@ public class EditorState extends State {
      */
     public EditorState(Size windowSize, Input input, GameSettings gameSettings) {
         super(windowSize, input, gameSettings);
-        gameMap = new GameMap(new Size(32, 32), spriteLibrary);
+        gameMap = new GameMap(new Size(16, 32), spriteLibrary);
         gameSettings.getRenderSettings().getShouldRenderGrid().setValue(true);
 
         uiContainers.add(new UIButtonMenu(windowSize));
