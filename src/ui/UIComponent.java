@@ -87,7 +87,7 @@ public abstract class UIComponent {
 
     /**
      * Set the padding of the UI
-     * @param padding The new margin
+     * @param padding The new padding
      *
      * @see Spacing
      */

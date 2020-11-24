@@ -81,4 +81,11 @@ public class MouseHandler {
 
         return Optional.empty();
     }
+
+    /**
+     * Get the primary button action
+     */
+    public MouseAction getPrimaryButtonAction() {
+        return primaryButtonAction;
+    }
 }
