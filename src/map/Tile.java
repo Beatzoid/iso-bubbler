@@ -12,7 +12,7 @@ public class Tile implements Serializable {
     private transient Image image;
     private transient Image sprite;
     private int tileIndex;
-    private String tileName;
+    private final String tileName;
 
     /**
      * The Tile class handles loading and managing tiles

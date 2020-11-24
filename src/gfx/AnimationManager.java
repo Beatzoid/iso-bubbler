@@ -15,7 +15,7 @@ public class AnimationManager {
     private int currentFrameTime;
     private int frameIndex;
     private int directionIndex;
-    private boolean looping;
+    private final boolean looping;
 
     /**
      * The AnimationManager manages animations

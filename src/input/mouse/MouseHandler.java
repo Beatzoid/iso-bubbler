@@ -49,6 +49,7 @@ public class MouseHandler {
     /**
      * Get the active consumer
      */
+    @SuppressWarnings("unused")
     public MouseConsumer getActiveConsumer() {
         return activeConsumer;
     }

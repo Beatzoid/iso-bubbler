@@ -8,7 +8,7 @@ import ui.UIText;
 
 public class UIGameTime extends HorizontalContainer {
 
-    private UIText gameTime;
+    private final UIText gameTime;
 
     /**
      * The UIGameTime manages the game time on the UI

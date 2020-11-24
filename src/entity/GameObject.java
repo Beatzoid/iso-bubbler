@@ -35,7 +35,7 @@ public abstract class GameObject {
     public abstract CollisionBox getCollisionBox();
     public boolean collidesWith(GameObject other) {
         return getCollisionBox().collidesWith(other.getCollisionBox());
-    };
+    }
 
     /**
      * Return the position

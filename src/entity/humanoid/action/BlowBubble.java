@@ -10,7 +10,7 @@ import state.State;
 public class BlowBubble extends Action {
 
     private int lifeSpanInUpdates;
-    private Humanoid target;
+    private final Humanoid target;
     private Bubble bubble;
 
     /**
@@ -20,7 +20,7 @@ public class BlowBubble extends Action {
     public BlowBubble(Humanoid target) {
         lifeSpanInUpdates = GameLoop.UPDATES_PER_SECOND;
         this.target = target;
-        interruptable = false;
+        interruptible = false;
     }
 
     @Override

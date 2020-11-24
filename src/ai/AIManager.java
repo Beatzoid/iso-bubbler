@@ -39,13 +39,10 @@ public class AIManager {
      * @param nextState The next state to transition to
      */
     private void transitionTo(String nextState) {
-        switch (nextState) {
-            case "wander":
-                currentAIState = new Wander();
-                return;
-            case "stand":
-            default:
-                currentAIState = new Stand();
+        if ("wander".equals(nextState)) {
+            currentAIState = new Wander();
+        } else {
+            currentAIState = new Stand();
         }
     }
 }

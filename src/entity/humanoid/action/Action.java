@@ -10,14 +10,14 @@ import state.State;
  */
 public abstract class Action {
 
-    protected boolean interruptable;
+    protected boolean interruptible;
     protected boolean soundPlaying;
 
     /**
      * The Action class manages Actions for NPC's and Players
      */
     public Action() {
-        interruptable = true;
+        interruptible = true;
     }
 
     /**
@@ -60,9 +60,9 @@ public abstract class Action {
 
 
     /**
-     * Whether or not the Action is interruptable
+     * Whether or not the Action is interruptible
      */
-    public boolean isInterruptable() {
-        return interruptable;
+    public boolean isInterruptible() {
+        return interruptible;
     }
 }

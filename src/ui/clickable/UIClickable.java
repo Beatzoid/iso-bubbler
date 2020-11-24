@@ -29,6 +29,7 @@ public abstract class UIClickable extends UIComponent implements MouseConsumer {
         }
     }
 
+    @SuppressWarnings("EmptyMethod")
     protected abstract void onFocus(State state);
 
     private Rectangle getBounds() {

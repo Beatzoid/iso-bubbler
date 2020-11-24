@@ -5,12 +5,11 @@ import controller.EntityController;
 import core.Motion;
 import entity.humanoid.Humanoid;
 import state.State;
-import gfx.AnimationManager;
 import gfx.SpriteLibrary;
 
 public class NPC extends Humanoid {
 
-    private AIManager aiManager;
+    private final AIManager aiManager;
 
     /**
      * The NPC class manages all NPC's

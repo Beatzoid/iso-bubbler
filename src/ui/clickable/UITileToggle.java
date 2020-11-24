@@ -1,6 +1,5 @@
 package ui.clickable;
 
-import core.Size;
 import gfx.ImageUtils;
 import input.mouse.action.TilePlacer;
 import map.Tile;
@@ -12,9 +11,9 @@ import java.awt.image.BufferedImage;
 
 public class UITileToggle extends UIClickable {
 
-    private UIImage image;
+    private final UIImage image;
     private BufferedImage activeSprite;
-    private TilePlacer tilePlacer;
+    private final TilePlacer tilePlacer;
     private boolean active;
 
     /**

@@ -17,8 +17,8 @@ import java.util.Optional;
 public class Player extends Humanoid {
 
     private NPC target;
-    private double targetRange;
-    private SelectionCircle selectionCircle;
+    private final double targetRange;
+    private final SelectionCircle selectionCircle;
 
     /**
      * The player class manages the player
@@ -44,10 +44,10 @@ public class Player extends Humanoid {
         super.update(state);
         handleTarget(state);
 
-        handleInput(state);
+        handleInput();
     }
 
-    private void handleInput(State state) {
+    private void handleInput() {
         if (entityController.isRequestingAction()) {
             if (target != null) {
                 perform(new BlowBubble(target));
@@ -78,6 +78,7 @@ public class Player extends Humanoid {
                 .min(Comparator.comparingDouble(npc -> position.distanceTo(npc.getPosition())));
     }
 
+    @SuppressWarnings("EmptyMethod")
     @Override
     protected void handleCollision(GameObject other) {}
 }

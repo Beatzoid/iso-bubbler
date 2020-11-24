@@ -11,7 +11,7 @@ public class Display extends JFrame {
 
     private final Canvas canvas;
     private final Renderer renderer;
-    private DebugRenderer debugRenderer;
+    private final DebugRenderer debugRenderer;
 
     /**
      * The Display class manages the display

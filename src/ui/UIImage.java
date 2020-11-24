@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class UIImage extends UIComponent {
 
-    private Image image;
+    private final Image image;
 
     /**
      * The UIImage class manages images on the UI

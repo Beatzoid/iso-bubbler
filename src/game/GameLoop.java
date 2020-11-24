@@ -1,31 +1,23 @@
 package game;
 
-/**
- * The main gameloop.
- *
- * @see game
- * @see Runnable
- * @author beatzoid
- */
-
 public class GameLoop implements Runnable {
 
     public static final int UPDATES_PER_SECOND = 60;
 
     private final Game game;
 
+    @SuppressWarnings("FieldCanBeLocal")
     private boolean running;
+    @SuppressWarnings("FieldCanBeLocal")
     private final double updateRate = 1.0d/UPDATES_PER_SECOND;
 
     private long nextStatTime;
     private int fps, ups;
 
     /**
-     * The main gameloop.
+     * The main GameLoop.
      *
-     * @see game
-     * @see Runnable
-     * @author beatzoid
+     * @see Game
      */
     public GameLoop(Game game) {
         this.game = game;

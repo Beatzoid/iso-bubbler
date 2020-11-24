@@ -14,10 +14,11 @@ public class Camera {
     private static final int SAFETY_SPACE = 2 * Game.SPRITE_SIZE;
 
     private Position position;
-    private Size windowSize;
+    private final Size windowSize;
 
     private Rectangle viewBounds;
 
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     private Optional<GameObject> objectWithFocus;
 
     /**
@@ -60,8 +61,8 @@ public class Camera {
         if(objectWithFocus.isPresent()) {
             Position objectPosition = objectWithFocus.get().getPosition();
 
-            this.position.setX(objectPosition.getX() - windowSize.getWidth() / 2);
-            this.position.setY(objectPosition.getY() - windowSize.getHeight() / 2);
+            this.position.setX(objectPosition.getX() - windowSize.getWidth() / 2d);
+            this.position.setY(objectPosition.getY() - windowSize.getHeight() / 2d);
 
             clampWithinBounds(state);
             calculateViewBounds();

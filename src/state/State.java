@@ -22,18 +22,18 @@ import java.util.stream.Collectors;
 
 public abstract class State {
 
-    protected GameSettings gameSettings;
-    protected AudioPlayer audioPlayer;
+    protected final GameSettings gameSettings;
+    protected final AudioPlayer audioPlayer;
     protected GameMap gameMap;
-    protected List<GameObject> gameObjects;
-    protected List<UIContainer> uiContainers;
-    protected SpriteLibrary spriteLibrary;
-    protected Input input;
-    protected Camera camera;
-    protected Time time;
-    protected MouseHandler mouseHandler;
+    protected final List<GameObject> gameObjects;
+    protected final List<UIContainer> uiContainers;
+    protected final SpriteLibrary spriteLibrary;
+    protected final Input input;
+    protected final Camera camera;
+    protected final Time time;
+    protected final MouseHandler mouseHandler;
 
-    protected Size windowSize;
+    protected final Size windowSize;
 
     private State nextState;
 
@@ -75,6 +75,8 @@ public abstract class State {
     }
 
     private void updateGameObjects() {
+        // Do not replace this with what it suggests, otherwise you get a ConcurrentModification error
+        //noinspection ForLoopReplaceableByForEach
         for (int i = 0; i < gameObjects.size(); i++) {
             gameObjects.get(i).update(this);
         }
@@ -174,7 +176,7 @@ public abstract class State {
      * Set the next state
      * @param nextState The next state
      */
-    public void setNextState(State nextState) {;
+    public void setNextState(State nextState) {
         this.nextState = nextState;
     }
 

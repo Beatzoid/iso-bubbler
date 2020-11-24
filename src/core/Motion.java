@@ -63,6 +63,7 @@ public class Motion {
      * Multiply the vector
      * @param multiplier How much to multiply the vector by
      */
+    @SuppressWarnings("unused")
     public void multiply(double multiplier) {
         vector.multiply(multiplier);
     }

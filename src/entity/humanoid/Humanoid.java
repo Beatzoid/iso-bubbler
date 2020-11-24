@@ -15,9 +15,9 @@ import java.util.*;
 
 public class Humanoid extends MovingEntity {
 
-    private static List<String> availableCharacters = new ArrayList<>(List.of("dave", "matt", "melissa", "roger"));
+    private static final List<String> availableCharacters = new ArrayList<>(List.of("dave", "matt", "melissa", "roger"));
 
-    protected List<Effect> effects;
+    protected final List<Effect> effects;
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     protected Optional<Action> action;
 
@@ -100,7 +100,7 @@ public class Humanoid extends MovingEntity {
      * @param action The action to perform
      */
     public void perform(Action action) {
-        if(this.action.isPresent() && !this.action.get().isInterruptable()) return;
+        if(this.action.isPresent() && !this.action.get().isInterruptible()) return;
         this.action = Optional.of(action);
     }
 
@@ -115,6 +115,7 @@ public class Humanoid extends MovingEntity {
     /**
      * Clear the Effects of an Entity
      */
+    @SuppressWarnings("unused")
     protected void clearEffects() {
         effects.clear();
     }

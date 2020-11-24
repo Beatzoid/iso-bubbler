@@ -9,7 +9,7 @@ import state.State;
 public class WalkInDirection extends Action {
 
     private int walkTime;
-    private Motion motion;
+    private final Motion motion;
 
     /**
      * The WalkInDirection allows a NPC/Humanoid to walk in a specific direction

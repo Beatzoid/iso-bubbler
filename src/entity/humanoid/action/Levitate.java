@@ -6,7 +6,7 @@ import state.State;
 public class Levitate extends Action {
 
     public Levitate() {
-        interruptable = false;
+        interruptible = false;
     }
 
     @Override

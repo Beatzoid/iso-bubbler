@@ -15,7 +15,6 @@ import map.MapIO;
 import state.game.ui.UIGameTime;
 import state.game.ui.UISicknessStats;
 import input.Input;
-import map.GameMap;
 import state.State;
 import state.menu.MenuState;
 import ui.Alignment;
@@ -78,6 +77,7 @@ public class GameState extends State {
         makeNumberOfNPCsSick(5);
     }
 
+    @SuppressWarnings("SameParameterValue")
     private void makeNumberOfNPCsSick(int number) {
         getGameObjectsOfClass(NPC.class).stream()
                 .limit(number)

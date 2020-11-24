@@ -5,8 +5,8 @@ import state.State;
 
 public class AITransition {
 
-    private String nextState;
-    private AICondition condition;
+    private final String nextState;
+    private final AICondition condition;
 
     /**
      * Manages AI transition between states

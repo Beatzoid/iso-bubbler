@@ -5,7 +5,7 @@ public class Position {
     /**
      * The range of how close a NPC has to be to the position before stopping
      */
-    public static int PROXIMITY_RANGE = 5;
+    public static final int PROXIMITY_RANGE = 5;
 
     private double x;
     private double y;

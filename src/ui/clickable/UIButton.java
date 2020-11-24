@@ -12,6 +12,7 @@ import java.awt.*;
 public class UIButton extends UIClickable {
 
     private final UIContainer container;
+    @SuppressWarnings("FieldCanBeLocal")
     private final UIText label;
 
     private final ClickAction clickAction;

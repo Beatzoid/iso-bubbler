@@ -4,7 +4,6 @@ import core.Size;
 import game.settings.RenderSettings;
 import map.GameMap;
 import ui.Alignment;
-import ui.UIText;
 import ui.VerticalContainer;
 import ui.clickable.UICheckbox;
 import ui.clickable.UIMinimap;

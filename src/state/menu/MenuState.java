@@ -1,7 +1,6 @@
 package state.menu;
 
 import core.Size;
-import game.Game;
 import game.settings.GameSettings;
 import input.Input;
 import map.GameMap;

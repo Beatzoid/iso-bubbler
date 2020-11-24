@@ -11,8 +11,8 @@ import java.awt.image.BufferedImage;
 public class UISlider extends UIClickable {
 
     private double value;
-    private double min;
-    private double max;
+    private final double min;
+    private final double max;
 
     /**
      * The UISlider class manages UI Sliders

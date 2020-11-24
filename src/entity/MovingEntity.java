@@ -10,7 +10,7 @@ import java.awt.*;
 
 public abstract class MovingEntity extends GameObject {
 
-    protected EntityController entityController;
+    protected final EntityController entityController;
     protected Motion motion;
     protected AnimationManager animationManager;
     protected Direction direction;

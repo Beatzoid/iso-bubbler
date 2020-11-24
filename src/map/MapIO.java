@@ -16,6 +16,7 @@ public class MapIO {
         File mapsFolder = new File(urlToResourcesFolder.getFile() + "/maps/");
 
         if (!mapsFolder.exists()) {
+            //noinspection ResultOfMethodCallIgnored
             mapsFolder.mkdir();
         }
 

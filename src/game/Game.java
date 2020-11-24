@@ -10,9 +10,10 @@ import state.menu.MenuState;
 
 public class Game {
 
-    public static int SPRITE_SIZE = 64;
+    public static final int SPRITE_SIZE = 64;
 
     private final Display display;
+    @SuppressWarnings("FieldCanBeLocal")
     private final Input input;
     private State state;
     private final GameSettings settings;

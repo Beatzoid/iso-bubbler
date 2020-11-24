@@ -81,6 +81,7 @@ public class GameMap implements Serializable {
      * @param camera The camera to use
      */
     public Position getViewableEndingGridPosition(Camera camera) {
+        //noinspection IntegerDivisionInFloatingPointContext
         return new Position(
                 Math.min(tiles.length, camera.getPosition().getX() / Game.SPRITE_SIZE + camera.getSize().getWidth() / Game.SPRITE_SIZE + SAFETY_SPACE),
                 Math.min(tiles[0].length, camera.getPosition().getY() / Game.SPRITE_SIZE + camera.getSize().getHeight() / Game.SPRITE_SIZE + SAFETY_SPACE)

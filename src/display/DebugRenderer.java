@@ -32,7 +32,7 @@ public class DebugRenderer {
 
     private void drawEffects(State state, Graphics graphics) {
         Camera camera = state.getCamera();
-        state.getGameObjectsOfClass(Humanoid.class).stream()
+        state.getGameObjectsOfClass(Humanoid.class)
                 .forEach(humanoid -> {
                     UIText effectsText = new UIText(
                             humanoid.getEffects().stream().map(effect -> effect.getClass().getSimpleName()).collect(Collectors.joining(","))

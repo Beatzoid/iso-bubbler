@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 
 public class UICheckbox extends UIComponent {
 
-    private UIContainer container;
+    private final UIContainer container;
 
     /**
      * The UICheckbox class manages checkbox's on the UI
@@ -40,7 +40,7 @@ public class UICheckbox extends UIComponent {
 
     private static class Checkbox extends UIClickable {
 
-        private Setting<Boolean> setting;
+        private final Setting<Boolean> setting;
         private Color color;
 
         /**

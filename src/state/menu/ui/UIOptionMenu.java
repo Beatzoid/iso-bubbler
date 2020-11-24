@@ -6,18 +6,17 @@ import state.State;
 import state.menu.MenuState;
 import ui.*;
 import ui.clickable.UIButton;
-import ui.clickable.UIClickable;
 import ui.clickable.UISlider;
 
 import java.awt.*;
 
 public class UIOptionMenu extends VerticalContainer {
 
-    private UISlider musicVolSlider;
-    private UIText musicVolLabel;
+    private final UISlider musicVolSlider;
+    private final UIText musicVolLabel;
 
-    private UISlider soundVolSlider;
-    private UIText soundVolLabel;
+    private final UISlider soundVolSlider;
+    private final UIText soundVolLabel;
 
     /**
      * The UIOptionMenu manages the option menu UI
