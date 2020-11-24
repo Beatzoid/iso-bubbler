@@ -12,6 +12,7 @@ import gfx.SpriteLibrary;
 import input.Input;
 import input.mouse.MouseHandler;
 import map.GameMap;
+import map.MapIO;
 import ui.UIContainer;
 
 import java.util.ArrayList;
@@ -203,5 +204,12 @@ public abstract class State {
      */
     public MouseHandler getMouseHandler() {
         return mouseHandler;
+    }
+
+    /**
+     * Load the GameMap
+     */
+    public void loadGameMap() {
+        gameMap = MapIO.load(spriteLibrary);
     }
 }

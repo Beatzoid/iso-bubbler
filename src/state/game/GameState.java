@@ -11,6 +11,7 @@ import entity.humanoid.effect.Isolated;
 import entity.humanoid.effect.Sick;
 import game.Game;
 import game.settings.GameSettings;
+import map.MapIO;
 import state.game.ui.UIGameTime;
 import state.game.ui.UISicknessStats;
 import input.Input;
@@ -43,7 +44,7 @@ public class GameState extends State {
      */
     public GameState(Size windowSize, Input input, GameSettings gameSettings) {
         super(windowSize, input, gameSettings);
-        gameMap = new GameMap(new Size(15, 10), spriteLibrary);
+        gameMap = MapIO.load(spriteLibrary);
         gameSettings.getRenderSettings().getShouldRenderGrid().setValue(false);
         playing = true;
         initializeCharacters();

@@ -6,9 +6,10 @@ import display.Camera;
 import game.Game;
 import gfx.SpriteLibrary;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class GameMap {
+public class GameMap implements Serializable {
 
     private static final int SAFETY_SPACE = 2;
 
@@ -106,5 +107,17 @@ public class GameMap {
      */
     public void setTile(int gridX, int gridY, Tile tile) {
         tiles[gridX][gridY] = tile;
+    }
+
+    /**
+     * Reload the graphics
+     * @param spriteLibrary The SpriteLibrary
+     */
+    public void reloadGraphics(SpriteLibrary spriteLibrary) {
+        for (Tile[] row : tiles) {
+            for(Tile tile : row) {
+                tile.reloadGraphics(spriteLibrary);
+            }
+        }
     }
 }
