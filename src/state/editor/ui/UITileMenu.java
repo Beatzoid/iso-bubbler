@@ -2,34 +2,42 @@ package state.editor.ui;
 
 import core.Size;
 import game.Game;
+import game.settings.EditorSettings;
 import gfx.SpriteLibrary;
 import map.Tile;
 import ui.*;
+import ui.clickable.UICheckbox;
 import ui.clickable.UITileToggle;
 
 import java.awt.*;
 
-public class UITileMenu extends HorizontalContainer {
+public class UITileMenu extends VerticalContainer {
 
     /**
      * The UITileMenu manages the tile menu on the map editor
      *
      * @param windowSize The window size
      * @param spriteLibrary The sprite library
+     * @param editorSettings The editor settings
      */
-    public UITileMenu(Size windowSize, SpriteLibrary spriteLibrary) {
+    public UITileMenu(Size windowSize, SpriteLibrary spriteLibrary, EditorSettings editorSettings) {
         super(windowSize);
         setBackgroundColor(Color.DARK_GRAY);
         setAlignment(new Alignment(Alignment.Position.START, Alignment.Position.END));
 
-        addUIComponent(new UITileToggle(new Tile(spriteLibrary, "grass")));
-        addUIComponent(getTileSet(spriteLibrary, "concrete"));
-        addUIComponent(getTileSet(spriteLibrary, "dirt"));
+        UIContainer tileContainer = new HorizontalContainer(windowSize);
+        tileContainer.addUIComponent(new UITileToggle(new Tile(spriteLibrary, "grass")));
+        tileContainer.addUIComponent(getTileSet(spriteLibrary, "concrete"));
+        tileContainer.addUIComponent(getTileSet(spriteLibrary, "dirt"));
+        tileContainer.addUIComponent(getTileSet(spriteLibrary, "water"));
+
+        addUIComponent(new UICheckbox("Auto Tile", editorSettings.getAutoTile()));
+        addUIComponent(tileContainer);
     }
 
     private UIComponent getTileSet(SpriteLibrary spriteLibrary, String tileset) {
         UIContainer main = new HorizontalContainer(new Size(0, 0));
-        main.setMargin(new Spacing(5));
+        main.setMargin(new Spacing(0));
         main.setPadding(new Spacing(0));
         Tile tile = new Tile(spriteLibrary, tileset);
 

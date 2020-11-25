@@ -1,10 +1,8 @@
 package state.menu;
 
 import core.Size;
-import game.Game;
 import game.settings.GameSettings;
 import input.Input;
-import io.MapIO;
 import map.GameMap;
 import state.State;
 import state.menu.ui.UIMainMenu;

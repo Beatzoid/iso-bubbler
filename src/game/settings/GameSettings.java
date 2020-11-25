@@ -6,6 +6,7 @@ public class GameSettings {
     private double gameSpeedMultiplier;
     private final AudioSettings audioSettings;
     private final RenderSettings renderSettings;
+    private final EditorSettings editorSettings;
 
     /**
      * The GameSettings class manages settings for the game.
@@ -16,6 +17,7 @@ public class GameSettings {
         gameSpeedMultiplier = 1;
        audioSettings = new AudioSettings();
        renderSettings = new RenderSettings();
+       editorSettings = new EditorSettings();
     }
 
     /**
@@ -65,5 +67,12 @@ public class GameSettings {
      */
     public RenderSettings getRenderSettings() {
         return renderSettings;
+    }
+
+    /**
+     * Get the editor settings
+     */
+    public EditorSettings getEditorSettings() {
+        return editorSettings;
     }
 }
