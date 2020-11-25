@@ -1,6 +1,7 @@
-package map;
+package io;
 
 import gfx.SpriteLibrary;
+import map.GameMap;
 
 import java.io.*;
 import java.net.URL;
@@ -20,8 +21,8 @@ public class MapIO {
             mapsFolder.mkdir();
         }
 
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(mapsFolder.toString() + "/map.ism"))) {
-            objectOutputStream.writeObject(map);
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(mapsFolder.toString() + "/map.isomap"))) {
+            bufferedWriter.write(map.serialize());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,12 +33,20 @@ public class MapIO {
      * @param spriteLibrary The SpriteLibrary
      */
     public static GameMap load(SpriteLibrary spriteLibrary) {
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(MapIO.class.getResource("/maps/map.ism").getFile()))) {
-            GameMap map = (GameMap) objectInputStream.readObject();
-            map.reloadGraphics(spriteLibrary);
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(MapIO.class.getResource("/maps/map.isomap").getFile()))) {
+            GameMap map = new GameMap();
 
+            StringBuilder stringBuilder = new StringBuilder();
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                stringBuilder.append(System.lineSeparator());
+                stringBuilder.append(line);
+            }
+
+            map.applySerializedData(stringBuilder.toString());
+            map.reloadGraphics(spriteLibrary);
             return map;
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 

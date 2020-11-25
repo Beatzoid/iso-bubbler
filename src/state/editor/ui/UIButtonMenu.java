@@ -1,7 +1,7 @@
 package state.editor.ui;
 
 import core.Size;
-import map.MapIO;
+import io.MapIO;
 import state.State;
 import state.menu.MenuState;
 import ui.HorizontalContainer;

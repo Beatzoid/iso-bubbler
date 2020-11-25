@@ -11,7 +11,7 @@ import entity.humanoid.effect.Isolated;
 import entity.humanoid.effect.Sick;
 import game.Game;
 import game.settings.GameSettings;
-import map.MapIO;
+import io.MapIO;
 import state.game.ui.UIGameTime;
 import state.game.ui.UISicknessStats;
 import input.Input;

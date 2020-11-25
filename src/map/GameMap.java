@@ -5,15 +5,20 @@ import core.Size;
 import display.Camera;
 import game.Game;
 import gfx.SpriteLibrary;
+import io.Persistable;
 
-import java.io.Serializable;
 import java.util.Arrays;
 
-public class GameMap implements Serializable {
+public class GameMap implements Persistable {
 
     private static final int SAFETY_SPACE = 2;
 
-    private final Tile[][] tiles;
+    private Tile[][] tiles;
+
+    /**
+     * The GameMap class handles the GameMap
+     */
+    public GameMap() {}
 
     /**
      * The GameMap class handles the GameMap
@@ -118,6 +123,47 @@ public class GameMap implements Serializable {
         for (Tile[] row : tiles) {
             for(Tile tile : row) {
                 tile.reloadGraphics(spriteLibrary);
+            }
+        }
+    }
+
+    @Override
+    public String serialize() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(this.getClass().getSimpleName());
+        stringBuilder.append(DELIMITER);
+        stringBuilder.append(tiles.length);
+        stringBuilder.append(DELIMITER);
+        stringBuilder.append(tiles[0].length);
+        stringBuilder.append(DELIMITER);
+
+        stringBuilder.append(SECTION_DELIMITER);
+        for (Tile[] tile : tiles) {
+            for (int y = 0; y < tiles[0].length; y++) {
+                stringBuilder.append(tile[y].serialize());
+                stringBuilder.append(LIST_DELIMITER);
+            }
+            stringBuilder.append(COLUMN_DELIMITER);
+        }
+
+        return stringBuilder.toString();
+    }
+
+    @Override
+    public void applySerializedData(String serializedData) {
+        String[] tokens = serializedData.split(DELIMITER);
+        tiles = new Tile[Integer.parseInt(tokens[1])][Integer.parseInt(tokens[2])];
+
+        String tileSection = serializedData.split(SECTION_DELIMITER)[1];
+        String[] columns = tileSection.split(COLUMN_DELIMITER);
+
+        for (int x = 0; x < tiles.length; x++) {
+            String[] serializedTiles  = columns[x].split(LIST_DELIMITER);
+            for (int y = 0; y < tiles[0].length; y++) {
+                Tile tile = new Tile();
+                tile.applySerializedData(serializedTiles[y]);
+
+                tiles[x][y] = tile;
             }
         }
     }

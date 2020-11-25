@@ -12,7 +12,7 @@ import gfx.SpriteLibrary;
 import input.Input;
 import input.mouse.MouseHandler;
 import map.GameMap;
-import map.MapIO;
+import io.MapIO;
 import ui.UIContainer;
 
 import java.util.ArrayList;
