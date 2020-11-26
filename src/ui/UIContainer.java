@@ -82,6 +82,9 @@ public abstract class UIContainer extends UIComponent {
         calculateContentPosition();
     }
 
+    /**
+     * Get the sprite of the container
+     */
     @Override
     public Image getSprite() {
         BufferedImage image = (BufferedImage) ImageUtils.createCompatibleImage(size, ImageUtils.ALPHA_BIT_MASKED);
@@ -153,5 +156,12 @@ public abstract class UIContainer extends UIComponent {
      */
     public void setCenterChildren(boolean centerChildren) {
         this.centerChildren = centerChildren;
+    }
+
+    /**
+     * Clear the container
+     */
+    protected void clear() {
+        children.clear();
     }
 }

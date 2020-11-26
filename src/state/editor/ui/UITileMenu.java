@@ -25,17 +25,17 @@ public class UITileMenu extends VerticalContainer {
         setBackgroundColor(Color.DARK_GRAY);
         setAlignment(new Alignment(Alignment.Position.START, Alignment.Position.END));
 
-        UIContainer tileContainer = new HorizontalContainer(windowSize);
-        tileContainer.addUIComponent(new UITileToggle(new Tile(spriteLibrary, "grass")));
-        tileContainer.addUIComponent(getTileSet(spriteLibrary, "concrete"));
-        tileContainer.addUIComponent(getTileSet(spriteLibrary, "dirt"));
-        tileContainer.addUIComponent(getTileSet(spriteLibrary, "water"));
+        UITabContainer tileContainer = new UITabContainer(windowSize);
+        tileContainer.addTab("Grass", getTileSet(spriteLibrary, "grass"));
+        tileContainer.addTab("Concrete", getTileSet(spriteLibrary, "concrete"));
+        tileContainer.addTab("Dirt", getTileSet(spriteLibrary, "dirt"));
+        tileContainer.addTab("Water", getTileSet(spriteLibrary, "water"));
 
         addUIComponent(new UICheckbox("Auto Tile", editorSettings.getAutoTile()));
         addUIComponent(tileContainer);
     }
 
-    private UIComponent getTileSet(SpriteLibrary spriteLibrary, String tileset) {
+    private UIContainer getTileSet(SpriteLibrary spriteLibrary, String tileset) {
         UIContainer main = new HorizontalContainer(new Size(0, 0));
         main.setMargin(new Spacing(0));
         main.setPadding(new Spacing(0));

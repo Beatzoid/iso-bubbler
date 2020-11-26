@@ -10,6 +10,8 @@ import state.State;
 import state.editor.ui.UIButtonMenu;
 import state.editor.ui.UIRenderSettings;
 import state.editor.ui.UITileMenu;
+import ui.Alignment;
+import ui.UITabContainer;
 
 public class EditorState extends State {
 
@@ -32,6 +34,11 @@ public class EditorState extends State {
 
         uiContainers.add(new UIButtonMenu(windowSize));
         uiContainers.add(new UIRenderSettings(windowSize, gameSettings.getRenderSettings(), gameMap));
-        uiContainers.add(new UITileMenu(windowSize, spriteLibrary, gameSettings.getEditorSettings()));
+
+        UITabContainer toolsContainer = new UITabContainer(windowSize);
+        toolsContainer.setAlignment(new Alignment(Alignment.Position.START, Alignment.Position.END));
+        toolsContainer.addTab("Tiles", new UITileMenu(windowSize, spriteLibrary, gameSettings.getEditorSettings()));
+        toolsContainer.addTab("Scenery", new UIRenderSettings(windowSize, gameSettings.getRenderSettings(), gameMap));
+        uiContainers.add(toolsContainer);
     }
 }
