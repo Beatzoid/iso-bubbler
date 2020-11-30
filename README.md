@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/beatzoid/iso-bubbler/badge)](https://www.codefactor.io/repository/github/beatzoid/iso-bubbler)
 # Iso Bubbler
 
 A 2D Game made using Java
