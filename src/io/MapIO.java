@@ -10,6 +10,7 @@ public class MapIO {
 
     /**
      * Save a GameMap
+     *
      * @param map The GameMap to save
      */
     public static void save(GameMap map) {
@@ -21,7 +22,7 @@ public class MapIO {
             mapsFolder.mkdir();
         }
 
-        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(mapsFolder.toString() + "/map.isomap"))) {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(mapsFolder + "/map.isomap"))) {
             bufferedWriter.write(map.serialize());
         } catch (IOException e) {
             e.printStackTrace();
@@ -30,6 +31,7 @@ public class MapIO {
 
     /**
      * Load a map
+     *
      * @param spriteLibrary The SpriteLibrary
      */
     public static GameMap load(SpriteLibrary spriteLibrary) {
