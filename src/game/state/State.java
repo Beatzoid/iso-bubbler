@@ -3,7 +3,6 @@ package game.state;
 import core.Position;
 import core.Size;
 import display.Camera;
-import entity.Bubble;
 import entity.GameObject;
 import game.Time;
 import gfx.SpriteLibrary;
@@ -28,9 +27,9 @@ public abstract class State {
 
     /**
      * The State class manages a bunch of different states
-     * @param windowSize The windowSize
-     * @param input The input
      *
+     * @param windowSize The windowSize
+     * @param input      The input
      * @see Size
      * @see Input
      */
@@ -49,11 +48,21 @@ public abstract class State {
         updateGameObjects();
         uiContainers.forEach(uiContainer -> uiContainer.update(this));
         camera.update(this);
+        handleMouseInput();
     }
 
+    private void handleMouseInput() {
+        if (input.isMouseClicked()) {
+            System.out.printf("Mouse clicked at position (%d, %d)%n", input.getMousePosition().intX(), input.getMousePosition().intY());
+        }
+
+        input.clearMouseClick();
+    }
+
+
     private void updateGameObjects() {
-        for (int i = 0; i < gameObjects.size(); i++) {
-            gameObjects.get(i).update(this);
+        for (GameObject gameObject : gameObjects) {
+            gameObject.update(this);
         }
     }
 
@@ -98,6 +107,7 @@ public abstract class State {
 
     /**
      * Get all GameObjects that are colliding with another GameObject
+     *
      * @param gameObject The GameObject to check
      */
     public List<GameObject> getCollidingGameObjects(GameObject gameObject) {
@@ -115,6 +125,7 @@ public abstract class State {
 
     /**
      * Get the GameObjects of a certain class
+     *
      * @param clazz The class to get
      */
     public <T extends GameObject> List<T> getGameObjectsOfClass(Class<T> clazz) {
@@ -134,6 +145,7 @@ public abstract class State {
 
     /**
      * Spawn a GameObject
+     *
      * @param gameObject The GameObject to spawn
      */
     public void spawn(GameObject gameObject) {

@@ -15,10 +15,10 @@ public class Display extends JFrame {
 
     /**
      * The Display class manages the display
-     * @param width The width of the display
-     * @param height The height of the display
-     * @param input The Input
      *
+     * @param width  The width of the display
+     * @param height The height of the display
+     * @param input  The Input
      * @see Input
      */
     public Display(int width, int height, Input input) {
@@ -32,6 +32,9 @@ public class Display extends JFrame {
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(width, height));
         canvas.setFocusable(false);
+        canvas.addMouseListener(input);
+        canvas.addMouseMotionListener(input);
+
         add(canvas);
         addKeyListener(input);
         pack();
@@ -44,9 +47,9 @@ public class Display extends JFrame {
 
     /**
      * Render the Display
-     * @param state The state
-     * @param debugMode Whether or not to enable debug mode
      *
+     * @param state     The state
+     * @param debugMode Whether or not to enable debug mode
      * @see State
      */
     public void render(State state, boolean debugMode) {
@@ -58,7 +61,7 @@ public class Display extends JFrame {
 
         renderer.render(state, graphics);
 
-        if(debugMode) {
+        if (debugMode) {
             debugRenderer.render(state, graphics);
         }
 
