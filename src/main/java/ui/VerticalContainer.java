@@ -19,7 +19,7 @@ public class VerticalContainer extends UIContainer {
         int combinedChildHeight = 0;
         int widestChildWidth = 0;
 
-        for(UIComponent uiComponent : children) {
+        for (UIComponent uiComponent : children) {
             combinedChildHeight += uiComponent.getSize().getHeight() + uiComponent.getMargin().getVertical();
 
             if (uiComponent.getSize().getWidth() > widestChildWidth) {
@@ -36,7 +36,8 @@ public class VerticalContainer extends UIContainer {
 
         for (UIComponent uiComponent : children) {
             currentY += uiComponent.getMargin().getTop();
-            uiComponent.setPosition(new Position(padding.getLeft(), currentY));
+            uiComponent.setRelativePosition(new Position(padding.getLeft(), currentY));
+            uiComponent.setAbsolutePosition(new Position(padding.getLeft() + absolutePosition.intX(), currentY + absolutePosition.intY()));
             currentY += uiComponent.getSize().getHeight();
             currentY += uiComponent.getMargin().getBottom();
         }

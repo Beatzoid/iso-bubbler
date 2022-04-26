@@ -151,4 +151,11 @@ public abstract class State {
     public void spawn(GameObject gameObject) {
         gameObjects.add(gameObject);
     }
+
+    /**
+     * Get the input
+     */
+    public Input getInput() {
+        return input;
+    }
 }

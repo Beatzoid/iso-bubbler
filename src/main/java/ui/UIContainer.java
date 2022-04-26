@@ -17,6 +17,8 @@ public abstract class UIContainer extends UIComponent {
     protected Alignment alignment;
     protected Size windowSize;
 
+    protected Size fixedSize;
+
     protected List<UIComponent> children;
 
     /**
@@ -28,7 +30,7 @@ public abstract class UIContainer extends UIComponent {
         alignment = new Alignment(Alignment.Position.START, Alignment.Position.START);
 
         // This makes the background transparent
-        backgroundColor = new Color(0, 0, 0,0);
+        backgroundColor = new Color(0, 0, 0, 0);
         margin = new Spacing(5);
         padding = new Spacing(5);
         children = new ArrayList<>();
@@ -37,11 +39,12 @@ public abstract class UIContainer extends UIComponent {
     }
 
     protected abstract Size calculateContentSize();
+
     protected abstract void calculateContentPosition();
 
     private void calculateSize() {
         Size calculatedContentSize = calculateContentSize();
-        size = new Size(
+        size = fixedSize != null ? fixedSize : new Size(
                 padding.getHorizontal() + calculatedContentSize.getWidth(),
                 padding.getVertical() + calculatedContentSize.getHeight()
         );
@@ -67,7 +70,8 @@ public abstract class UIContainer extends UIComponent {
             y = windowSize.getHeight() - size.getHeight() - margin.getBottom();
         }
 
-        this.position = new Position(x, y);
+        this.relativePosition = new Position(x, y);
+        this.absolutePosition = new Position(x, y);
 
         calculateContentPosition();
     }
@@ -83,8 +87,8 @@ public abstract class UIContainer extends UIComponent {
         for (UIComponent uiComponent : children) {
             graphics.drawImage(
                     uiComponent.getSprite(),
-                    uiComponent.getPosition().intX(),
-                    uiComponent.getPosition().intY(),
+                    uiComponent.getRelativePosition().intX(),
+                    uiComponent.getRelativePosition().intY(),
                     null
             );
         }
@@ -102,8 +106,8 @@ public abstract class UIContainer extends UIComponent {
 
     /**
      * Add a UI Component
-     * @param uiComponent The UIComponent to add
      *
+     * @param uiComponent The UIComponent to add
      * @see UIComponent
      */
     public void addUIComponent(UIComponent uiComponent) {
@@ -112,8 +116,8 @@ public abstract class UIContainer extends UIComponent {
 
     /**
      * Set the background color
-     * @param color The new color
      *
+     * @param color The new color
      * @see Color
      */
     public void setBackgroundColor(Color color) {
@@ -122,9 +126,14 @@ public abstract class UIContainer extends UIComponent {
 
     /**
      * Set the alignment of the UIContainer
+     *
      * @param alignment The new alignment
      */
     public void setAlignment(Alignment alignment) {
         this.alignment = alignment;
+    }
+
+    public void setFixedSize(Size fixedSize) {
+        this.fixedSize = fixedSize;
     }
 }

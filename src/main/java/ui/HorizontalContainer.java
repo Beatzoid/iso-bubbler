@@ -19,7 +19,7 @@ public class HorizontalContainer extends UIContainer {
         int combinedChildWidth = 0;
         int tallestChildHeight = 0;
 
-        for(UIComponent uiComponent : children) {
+        for (UIComponent uiComponent : children) {
             combinedChildWidth += uiComponent.getSize().getWidth() + uiComponent.getMargin().getHorizontal();
 
             if (uiComponent.getSize().getHeight() > tallestChildHeight) {
@@ -36,7 +36,8 @@ public class HorizontalContainer extends UIContainer {
 
         for (UIComponent uiComponent : children) {
             currentX += uiComponent.getMargin().getLeft();
-            uiComponent.setPosition(new Position(currentX, padding.getTop()));
+            uiComponent.setRelativePosition(new Position(currentX, padding.getTop()));
+            uiComponent.setAbsolutePosition(new Position(currentX + absolutePosition.intX(), padding.getTop() + absolutePosition.intY()));
             currentX += uiComponent.getSize().getWidth();
             currentX += uiComponent.getMargin().getRight();
         }
