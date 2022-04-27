@@ -1,4 +1,4 @@
-package game.state;
+package state;
 
 import core.Position;
 import core.Size;

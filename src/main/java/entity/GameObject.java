@@ -4,7 +4,7 @@ import core.CollisionBox;
 import core.Position;
 import core.Size;
 import display.Camera;
-import game.state.State;
+import state.State;
 
 import java.awt.*;
 

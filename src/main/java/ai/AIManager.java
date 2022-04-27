@@ -4,7 +4,7 @@ import ai.state.AIState;
 import ai.state.Stand;
 import ai.state.Wander;
 import entity.NPC;
-import game.state.State;
+import state.State;
 
 public class AIManager {
 

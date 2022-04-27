@@ -1,7 +1,7 @@
 package ui.clickable;
 
 import core.Position;
-import game.state.State;
+import state.State;
 import ui.UIComponent;
 
 import java.awt.*;

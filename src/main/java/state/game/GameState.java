@@ -1,4 +1,4 @@
-package game.state;
+package state.game;
 
 import controller.NPCController;
 import controller.PlayerController;
@@ -9,10 +9,11 @@ import entity.Player;
 import entity.SelectionCircle;
 import entity.humanoid.effect.Isolated;
 import entity.humanoid.effect.Sick;
-import game.ui.UIGameTime;
-import game.ui.UISicknessStats;
+import state.game.ui.UIGameTime;
+import state.game.ui.UISicknessStats;
 import input.Input;
 import map.GameMap;
+import state.State;
 import ui.Alignment;
 import ui.UIText;
 import ui.VerticalContainer;

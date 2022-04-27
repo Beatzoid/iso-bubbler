@@ -1,10 +1,8 @@
-package game.ui;
+package state.game.ui;
 
 import core.Size;
-import entity.humanoid.Humanoid;
-import entity.humanoid.effect.Sick;
-import game.state.GameState;
-import game.state.State;
+import state.game.GameState;
+import state.State;
 import ui.*;
 
 public class UISicknessStats extends HorizontalContainer {
