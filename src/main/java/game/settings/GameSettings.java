@@ -4,18 +4,23 @@ public class GameSettings {
 
     private boolean debugMode;
     private double gameSpeedMultiplier;
+    private float musicVolume;
+    private float soundVolume;
 
     /**
      * The GameSettings class manages settings for the game.
-     * @param debugMode Whether or not to enable debug mode
+     *
+     * @param debugMode Whether to enable debug mode
      */
     public GameSettings(boolean debugMode) {
         this.debugMode = debugMode;
         gameSpeedMultiplier = 1;
+        musicVolume = 0;
+        soundVolume = 0;
     }
 
     /**
-     * Get whether or not debug mode is enabled
+     * Get whether debug mode is enabled
      */
     public boolean isDebugMode() {
         return debugMode;
@@ -47,5 +52,21 @@ public class GameSettings {
      */
     public double getGameSpeedMultiplier() {
         return gameSpeedMultiplier;
+    }
+
+    public float getMusicVolume() {
+        return musicVolume;
+    }
+
+    public void setMusicVolume(float musicVolume) {
+        this.musicVolume = musicVolume;
+    }
+
+    public float getSoundVolume() {
+        return soundVolume;
+    }
+
+    public void setSoundVolume(float soundVolume) {
+        this.soundVolume = soundVolume;
     }
 }
