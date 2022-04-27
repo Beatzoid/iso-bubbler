@@ -19,11 +19,11 @@ public abstract class UIClickable extends UIComponent {
         isPressed = hasFocus && state.getInput().isMouseCurrentlyPressed();
 
         if (hasFocus && state.getInput().isMouseClicked()) {
-            onClick();
+            onClick(state);
         }
     }
 
-    protected abstract void onClick();
+    protected abstract void onClick(State state);
 
     private Rectangle getBounds() {
         return new Rectangle(absolutePosition.intX(), absolutePosition.intY(), size.getWidth(), size.getHeight());

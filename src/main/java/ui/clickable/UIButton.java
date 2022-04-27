@@ -13,11 +13,11 @@ public class UIButton extends UIClickable {
     private UIContainer container;
     private UIText label;
 
-    private Runnable clickEvent;
+    private ClickAction clickAction;
 
-    public UIButton(String label, Runnable clickEvent) {
+    public UIButton(String label, ClickAction clickAction) {
         this.label = new UIText(label);
-        this.clickEvent = clickEvent;
+        this.clickAction = clickAction;
 
         container = new VerticalContainer(new Size(0, 0));
         container.addUIComponent(this.label);
@@ -50,7 +50,7 @@ public class UIButton extends UIClickable {
     }
 
     @Override
-    protected void onClick() {
-        clickEvent.run();
+    protected void onClick(State state) {
+        clickAction.execute(state);
     }
 }

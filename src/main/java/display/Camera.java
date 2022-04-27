@@ -22,13 +22,15 @@ public class Camera {
 
     /**
      * The Camera manages following a character
-     * @param windowSize The window size
      *
+     * @param windowSize The window size
      * @see Size
      */
     public Camera(Size windowSize) {
         this.position = new Position(0, 0);
         this.windowSize = windowSize;
+        this.objectWithFocus = Optional.empty();
+
         calculateViewBounds();
     }
 
@@ -43,8 +45,8 @@ public class Camera {
 
     /**
      * Focus on a GameObject
-     * @param object The GameObject to focus on
      *
+     * @param object The GameObject to focus on
      * @see GameObject
      */
     public void focusOn(GameObject object) {
@@ -53,14 +55,15 @@ public class Camera {
 
     /**
      * Update the camera
+     *
      * @param state The state
      */
     public void update(State state) {
-        if(objectWithFocus.isPresent()) {
+        if (objectWithFocus.isPresent()) {
             Position objectPosition = objectWithFocus.get().getPosition();
 
-            this.position.setX(objectPosition.getX() - windowSize.getWidth() / 2);
-            this.position.setY(objectPosition.getY() - windowSize.getHeight() / 2);
+            this.position.setX(objectPosition.getX() - (float) windowSize.getWidth() / 2);
+            this.position.setY(objectPosition.getY() - (float) windowSize.getHeight() / 2);
 
             clampWithinBounds(state);
             calculateViewBounds();
@@ -94,6 +97,7 @@ public class Camera {
 
     /**
      * Get whether a GameObject is within the view of the camera
+     *
      * @param gameObject The GameObject to check
      */
     public boolean isInView(GameObject gameObject) {
