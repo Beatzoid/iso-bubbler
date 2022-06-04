@@ -2,8 +2,8 @@ package ui;
 
 import core.Position;
 import core.Size;
-import state.State;
 import gfx.ImageUtils;
+import state.State;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -71,7 +71,9 @@ public abstract class UIContainer extends UIComponent {
         }
 
         this.relativePosition = new Position(x, y);
-        this.absolutePosition = new Position(x, y);
+        if (parent == null) {
+            this.absolutePosition = new Position(x, y);
+        }
 
         calculateContentPosition();
     }
@@ -112,6 +114,7 @@ public abstract class UIContainer extends UIComponent {
      */
     public void addUIComponent(UIComponent uiComponent) {
         children.add(uiComponent);
+        uiComponent.setParent(this);
     }
 
     /**

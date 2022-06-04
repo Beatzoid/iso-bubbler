@@ -10,6 +10,7 @@ import entity.SelectionCircle;
 import entity.humanoid.effect.Isolated;
 import entity.humanoid.effect.Sick;
 import game.Game;
+import game.settings.GameSettings;
 import input.Input;
 import map.GameMap;
 import state.State;
@@ -38,8 +39,8 @@ public class GameState extends State {
      * @see Size
      * @see Input
      */
-    public GameState(Size windowSize, Input input) {
-        super(windowSize, input);
+    public GameState(Size windowSize, Input input, GameSettings gameSettings) {
+        super(windowSize, input, gameSettings);
         gameMap = new GameMap(new Size(20, 20), spriteLibrary);
         playing = true;
         initializeCharacters();
@@ -65,8 +66,8 @@ public class GameState extends State {
         camera.focusOn(player);
         gameObjects.add(circle);
 
-        initializeNPCs(200);
-        makeNumberOfNPCsSick(0);
+        initializeNPCs(100);
+        makeNumberOfNPCsSick(1);
     }
 
     @SuppressWarnings("SameParameterValue")
@@ -108,7 +109,7 @@ public class GameState extends State {
         winContainer.setAlignment(new Alignment(Alignment.Position.CENTER, Alignment.Position.CENTER));
         winContainer.setBackgroundColor(Color.DARK_GRAY);
 
-        winContainer.addUIComponent(new UIButton("Menu", (state) -> state.setNextState(new MenuState(windowSize, input))));
+        winContainer.addUIComponent(new UIButton("Menu", (state) -> state.setNextState(new MenuState(windowSize, input, gameSettings))));
         winContainer.addUIComponent(new UIButton("Options", (state) -> System.out.println("Options")));
         winContainer.addUIComponent(new UIButton("Exit", (state) -> System.exit(0)));
 
