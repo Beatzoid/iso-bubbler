@@ -77,7 +77,7 @@ public abstract class State {
 
 
     private void updateGameObjects() {
-        for (GameObject gameObject : gameObjects) {
+        for (GameObject gameObject : List.copyOf(gameObjects)) {
             gameObject.update(this);
         }
     }
@@ -181,5 +181,13 @@ public abstract class State {
 
     public GameSettings getGameSettings() {
         return gameSettings;
+    }
+
+    public AudioPlayer getAudioPlayer() {
+        return audioPlayer;
+    }
+
+    public void cleanup() {
+        audioPlayer.clear();
     }
 }

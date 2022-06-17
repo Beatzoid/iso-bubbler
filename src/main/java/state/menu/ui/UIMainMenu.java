@@ -21,7 +21,7 @@ public class UIMainMenu extends VerticalContainer {
 
         addUIComponent(new UIText("Isobubbler"));
         addUIComponent(new UIButton("Play", (state) -> state.setNextState(new GameState(windowSize, state.getInput(), state.getGameSettings()))));
-        addUIComponent(new UIButton("Options", (state) -> ((MenuState) state).enterMenu(new UIOptionsMenu(windowSize))));
+        addUIComponent(new UIButton("Options", (state) -> ((MenuState) state).enterMenu(new UIOptionsMenu(windowSize, state.getGameSettings()))));
         addUIComponent(new UIButton("Exit", (state) -> System.exit(0)));
     }
 }
