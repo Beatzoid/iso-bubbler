@@ -15,6 +15,7 @@ public class BlowBubble extends Action {
 
     /**
      * Blow a bubble
+     *
      * @param target Target
      */
     public BlowBubble(Humanoid target) {
@@ -56,5 +57,10 @@ public class BlowBubble extends Action {
     @Override
     public String getAnimationName() {
         return "blow";
+    }
+
+    @Override
+    public String getSoundName() {
+        return "bubble.wav";
     }
 }

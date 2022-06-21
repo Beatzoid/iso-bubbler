@@ -2,10 +2,10 @@ package entity;
 
 import ai.AIManager;
 import controller.EntityController;
+import core.Motion;
 import entity.humanoid.Humanoid;
-import state.State;
-import gfx.AnimationManager;
 import gfx.SpriteLibrary;
+import state.State;
 
 public class NPC extends Humanoid {
 
@@ -13,20 +13,21 @@ public class NPC extends Humanoid {
 
     /**
      * The NPC class manages all NPC's
-     * @param entityController The controller
-     * @param spriteLibrary The sprite library
      *
+     * @param entityController The controller
+     * @param spriteLibrary    The sprite library
      * @see EntityController
      * @see SpriteLibrary
      */
     public NPC(EntityController entityController, SpriteLibrary spriteLibrary) {
         super(entityController, spriteLibrary);
-        animationManager = new AnimationManager(spriteLibrary.getSpriteSet("dave"));
         aiManager = new AIManager();
+        motion = new Motion(Math.random() + 1);
     }
 
     /**
      * Update the NPC
+     *
      * @param state The state
      */
     @Override

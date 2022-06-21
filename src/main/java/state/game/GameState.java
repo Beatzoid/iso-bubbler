@@ -41,11 +41,13 @@ public class GameState extends State {
      */
     public GameState(Size windowSize, Input input, GameSettings gameSettings) {
         super(windowSize, input, gameSettings);
-        gameMap = new GameMap(new Size(20, 20), spriteLibrary);
+        gameMap = new GameMap(new Size(15, 10), spriteLibrary);
         playing = true;
         initializeCharacters();
         initializeUI(windowSize);
         initializeConditions();
+
+        audioPlayer.playMusic("isobubbler.wav");
     }
 
     private void initializeConditions() {
@@ -66,7 +68,7 @@ public class GameState extends State {
         camera.focusOn(player);
         gameObjects.add(circle);
 
-        initializeNPCs(100);
+        initializeNPCs(50);
         makeNumberOfNPCsSick(1);
     }
 

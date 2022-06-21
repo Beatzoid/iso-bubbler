@@ -13,9 +13,9 @@ public class DebugRenderer {
 
     /**
      * Renders debug info
-     * @param state The state
-     * @param graphics The graphics
      *
+     * @param state    The state
+     * @param graphics The graphics
      * @see Graphics
      * @see State
      */

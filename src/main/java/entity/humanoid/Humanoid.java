@@ -7,10 +7,12 @@ import entity.GameObject;
 import entity.MovingEntity;
 import entity.humanoid.action.Action;
 import entity.humanoid.effect.Effect;
-import state.State;
+import gfx.AnimationManager;
 import gfx.SpriteLibrary;
+import state.State;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,6 +21,8 @@ public class Humanoid extends MovingEntity {
     protected List<Effect> effects;
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     protected Optional<Action> action;
+
+    private final static List<String> availableCharacters = new ArrayList<>(List.of("dave", "matt", "melissa", "roger"));
 
     /**
      * The Humanoid class manages all human entities
@@ -35,13 +39,21 @@ public class Humanoid extends MovingEntity {
         effects = new ArrayList<>();
         action = Optional.empty();
 
+        this.animationManager = new AnimationManager(spriteLibrary.getSpriteSet(getRandomCharacter()));
+
         this.collisionBoxSize = new Size(16, 28);
         this.renderOffset = new Position(size.getWidth() / 2, size.getHeight() - 12);
         this.collisionBoxOffset = new Position(collisionBoxSize.getWidth() / 2, collisionBoxSize.getHeight());
     }
 
+    private String getRandomCharacter() {
+        Collections.shuffle(availableCharacters);
+        return availableCharacters.get(0);
+    }
+
     /**
      * Update the Humanoid
+     *
      * @param state The state
      */
     @Override
@@ -58,7 +70,7 @@ public class Humanoid extends MovingEntity {
                 .filter(Effect::shouldDelete)
                 .forEach(effects::remove);
 
-        if(action.isPresent() && action.get().isDone()) {
+        if (action.isPresent() && action.get().isDone()) {
             action = Optional.empty();
         }
     }
@@ -74,11 +86,11 @@ public class Humanoid extends MovingEntity {
         return "stand";
     }
 
-    @SuppressWarnings("OptionalIsPresent")
     private void handleAction(State state) {
-        if (action.isPresent()) {
-            action.get().update(state, this);
-        }
+        action.ifPresent(value -> {
+            value.update(state, this);
+            value.playSound(state.getAudioPlayer());
+        });
     }
 
     protected void handleMotion() {
@@ -89,15 +101,17 @@ public class Humanoid extends MovingEntity {
 
     /**
      * Perform a action
+     *
      * @param action The action to perform
      */
     public void perform(Action action) {
-        if(this.action.isPresent() && !this.action.get().isInterruptable()) return;
+        if (this.action.isPresent() && !this.action.get().isInterruptable()) return;
         this.action = Optional.of(action);
     }
 
     /**
      * Add a Effect
+     *
      * @param effect The Effect to add
      */
     public void addEffect(Effect effect) {
@@ -114,6 +128,7 @@ public class Humanoid extends MovingEntity {
     /**
      * Get whether or not a moving entity is affected by a effect.
      * The reason this is "clazz" and not "class" is because "class" is a Java keyword, and will throw an error if we try to use it as a parameter.
+     *
      * @param clazz The effect to check.
      */
     public boolean isAffectedBy(Class<?> clazz) {
@@ -122,7 +137,8 @@ public class Humanoid extends MovingEntity {
     }
 
     @Override
-    protected void handleCollision(GameObject other) {}
+    protected void handleCollision(GameObject other) {
+    }
 
     /**
      * Get the effects on the Humanoid

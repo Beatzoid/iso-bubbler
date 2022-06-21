@@ -1,8 +1,8 @@
 package ui;
 
 import core.Size;
-import state.State;
 import gfx.ImageUtils;
+import state.State;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -24,6 +24,7 @@ public class UIText extends UIComponent {
 
     /**
      * The UIText class displays text on the screen
+     *
      * @param text What text to display
      */
     public UIText(String text) {
@@ -32,6 +33,7 @@ public class UIText extends UIComponent {
         this.fontStyle = Font.PLAIN;
         this.color = Color.WHITE;
         loadFont();
+        createFont();
 
         this.dropShadow = true;
         this.dropShadowOffset = 2;
@@ -41,10 +43,12 @@ public class UIText extends UIComponent {
     // I don't fully understand how this works so please don't modify it unless you know how it works
     private void loadFont() {
         GraphicsEnvironment ge = null;
-        try{
+        try {
             ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, UIText.class.getResourceAsStream("/fonts/JoystixMonospace.ttf")));
-        } catch(FontFormatException | IOException e){e.printStackTrace();}
+        } catch (FontFormatException | IOException e) {
+            e.printStackTrace();
+        }
 
         String targetName = "Joystix Monospace";
         String result = null;
@@ -77,7 +81,7 @@ public class UIText extends UIComponent {
 
     @Override
     public void update(State state) {
-        createFont();
+//        createFont();
         calculateSize();
     }
 
@@ -99,6 +103,7 @@ public class UIText extends UIComponent {
 
     /**
      * Set the text
+     *
      * @param text The new text
      */
     public void setText(String text) {

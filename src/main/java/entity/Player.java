@@ -1,12 +1,15 @@
 package entity;
 
 import controller.EntityController;
+import core.Position;
+import core.Vector2D;
 import entity.humanoid.Humanoid;
 import entity.humanoid.action.BlowBubble;
+import entity.humanoid.action.WalkInDirection;
 import entity.humanoid.effect.Isolated;
 import game.Game;
-import state.State;
 import gfx.SpriteLibrary;
+import state.State;
 
 import java.util.Comparator;
 import java.util.Optional;
@@ -19,10 +22,10 @@ public class Player extends Humanoid {
 
     /**
      * The player class manages the player
-     * @param entityController The controller
-     * @param spriteLibrary The sprite library
-     * @param selectionCircle The selection circle
      *
+     * @param entityController The controller
+     * @param spriteLibrary    The sprite library
+     * @param selectionCircle  The selection circle
      * @see EntityController
      * @see SpriteLibrary
      * @see SelectionCircle
@@ -31,6 +34,9 @@ public class Player extends Humanoid {
         super(entityController, spriteLibrary);
         this.selectionCircle = selectionCircle;
         this.targetRange = Game.SPRITE_SIZE;
+
+        setPosition(new Position(Game.SPRITE_SIZE * 5, 0));
+        perform(new WalkInDirection(new Vector2D(0, 1)));
     }
 
     @Override
@@ -73,5 +79,6 @@ public class Player extends Humanoid {
     }
 
     @Override
-    protected void handleCollision(GameObject other) {}
+    protected void handleCollision(GameObject other) {
+    }
 }

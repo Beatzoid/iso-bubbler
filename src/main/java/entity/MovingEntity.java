@@ -2,9 +2,9 @@ package entity;
 
 import controller.EntityController;
 import core.*;
-import state.State;
 import gfx.AnimationManager;
 import gfx.SpriteLibrary;
+import state.State;
 
 import java.awt.*;
 
@@ -21,9 +21,9 @@ public abstract class MovingEntity extends GameObject {
 
     /**
      * The MovingEntity class manages all MovingEntities and extends the GameObject class
-     * @param entityController The controller
-     * @param spriteLibrary The SpriteLibrary
      *
+     * @param entityController The controller
+     * @param spriteLibrary    The SpriteLibrary
      * @see GameObject
      * @see EntityController
      * @see SpriteLibrary
@@ -40,6 +40,7 @@ public abstract class MovingEntity extends GameObject {
 
     /**
      * Update the MovingEntity
+     *
      * @param state The state
      */
     @Override
@@ -49,10 +50,9 @@ public abstract class MovingEntity extends GameObject {
         animationManager.update(direction);
 
         handleCollisions(state);
-        manageDirection();
         animationManager.playAnimation(decideAnimation());
 
-        position.apply(motion);
+        apply(motion);
     }
 
     private void handleCollisions(State state) {
@@ -65,7 +65,7 @@ public abstract class MovingEntity extends GameObject {
 
     protected abstract String decideAnimation();
 
-    private void manageDirection() {
+    private void manageDirection(Motion motion) {
         if (motion.isMoving()) {
             this.direction = Direction.fromMotion(motion);
             this.directionVector = motion.getDirection();
@@ -79,12 +79,12 @@ public abstract class MovingEntity extends GameObject {
         positionWithMotion.subtract(collisionBoxOffset);
 
         return new CollisionBox(
-            new Rectangle(
-                positionWithMotion.intX(),
-                positionWithMotion.intY(),
-                collisionBoxSize.getWidth(),
-                collisionBoxSize.getHeight()
-            )
+                new Rectangle(
+                        positionWithMotion.intX(),
+                        positionWithMotion.intY(),
+                        collisionBoxSize.getWidth(),
+                        collisionBoxSize.getHeight()
+                )
         );
     }
 
@@ -105,8 +105,8 @@ public abstract class MovingEntity extends GameObject {
 
     /**
      * Get whether a Entity will collide with a GameObject on the X axis
-     * @param other The GameObject to check
      *
+     * @param other The GameObject to check
      * @see GameObject
      */
     public boolean willCollideX(GameObject other) {
@@ -120,8 +120,8 @@ public abstract class MovingEntity extends GameObject {
 
     /**
      * Get whether a Entity will collide with a GameObject on the Y axis
-     * @param other The GameObject to check
      *
+     * @param other The GameObject to check
      * @see GameObject
      */
     public boolean willCollideY(GameObject other) {
@@ -135,6 +135,7 @@ public abstract class MovingEntity extends GameObject {
 
     /**
      * Get if the entity is facing a position
+     *
      * @param other The Position to check
      */
     public boolean isFacing(Position other) {
@@ -142,5 +143,10 @@ public abstract class MovingEntity extends GameObject {
         double dotProduct = Vector2D.dotProduct(direction, directionVector);
 
         return dotProduct > 0;
+    }
+
+    public void apply(Motion motion) {
+        manageDirection(motion);
+        position.apply(motion);
     }
 }

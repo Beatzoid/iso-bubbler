@@ -68,10 +68,6 @@ public abstract class State {
     }
 
     private void handleMouseInput() {
-//        if (input.isMouseClicked()) {
-//            System.out.printf("Mouse clicked at position (%d, %d)%n", input.getMousePosition().intX(), input.getMousePosition().intY());
-//        }
-
         input.clearMouseClick();
     }
 

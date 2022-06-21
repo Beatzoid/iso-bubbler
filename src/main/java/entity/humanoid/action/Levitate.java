@@ -23,4 +23,9 @@ public class Levitate extends Action {
     public String getAnimationName() {
         return "levitate";
     }
+
+    @Override
+    public String getSoundName() {
+        return null;
+    }
 }
