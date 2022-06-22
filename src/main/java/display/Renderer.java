@@ -2,8 +2,8 @@ package display;
 
 import core.Position;
 import game.Game;
-import state.State;
 import map.GameMap;
+import state.State;
 
 import java.awt.*;
 
@@ -11,9 +11,9 @@ public class Renderer {
 
     /**
      * Render the GameObjects
-     * @param state The state
-     * @param graphics The graphics
      *
+     * @param state    The state
+     * @param graphics The graphics
      * @see Graphics
      * @see State
      */
@@ -53,12 +53,22 @@ public class Renderer {
 
         for (int x = start.intX(); x < end.intX(); x++) {
             for (int y = start.intY(); y < end.intY(); y++) {
-                    graphics.drawImage(
-                            map.getTiles()[x][y].getSprite(),
+                graphics.drawImage(
+                        map.getTiles()[x][y].getSprite(),
+                        x * Game.SPRITE_SIZE - camera.getPosition().intX(),
+                        y * Game.SPRITE_SIZE - camera.getPosition().intY(),
+                        null
+                );
+
+                if (state.getGameSettings().getRenderSettings().getShouldRenderGrid().getValue()) {
+                    graphics.setColor(Color.GRAY);
+                    graphics.drawRect(
                             x * Game.SPRITE_SIZE - camera.getPosition().intX(),
                             y * Game.SPRITE_SIZE - camera.getPosition().intY(),
-                            null
+                            Game.SPRITE_SIZE,
+                            Game.SPRITE_SIZE
                     );
+                }
             }
         }
     }

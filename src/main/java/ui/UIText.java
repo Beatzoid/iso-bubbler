@@ -81,7 +81,7 @@ public class UIText extends UIComponent {
 
     @Override
     public void update(State state) {
-//        createFont();
+        createFont();
         calculateSize();
     }
 
