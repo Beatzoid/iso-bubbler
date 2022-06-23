@@ -16,9 +16,9 @@ public class GameMap {
 
     /**
      * The GameMap class handles the GameMap
-     * @param size The size of the GameMap
-     * @param spriteLibrary The spriteLibrary to use for the GameLibrary
      *
+     * @param size          The size of the GameMap
+     * @param spriteLibrary The spriteLibrary to use for the GameLibrary
      * @see Size
      * @see SpriteLibrary
      */
@@ -28,7 +28,7 @@ public class GameMap {
     }
 
     private void initializeTiles(SpriteLibrary spriteLibrary) {
-        for (Tile[] row : tiles){
+        for (Tile[] row : tiles) {
             Arrays.fill(row, new Tile(spriteLibrary));
         }
     }
@@ -66,6 +66,7 @@ public class GameMap {
 
     /**
      * Get the viewable starting grid position
+     *
      * @param camera The camera to use
      */
     public Position getViewableStartingGridPosition(Camera camera) {
@@ -77,12 +78,22 @@ public class GameMap {
 
     /**
      * Get the viewable ending grid position
+     *
      * @param camera The camera to use
      */
     public Position getViewableEndingGridPosition(Camera camera) {
         return new Position(
-                Math.min(tiles.length, camera.getPosition().getX() / Game.SPRITE_SIZE + camera.getSize().getWidth() / Game.SPRITE_SIZE + SAFETY_SPACE),
-                Math.min(tiles[0].length, camera.getPosition().getY() / Game.SPRITE_SIZE + camera.getSize().getHeight() / Game.SPRITE_SIZE + SAFETY_SPACE)
+                Math.min(tiles.length, camera.getPosition().getX() / Game.SPRITE_SIZE + (float) camera.getSize().getWidth() / Game.SPRITE_SIZE + SAFETY_SPACE),
+                Math.min(tiles[0].length, camera.getPosition().getY() / Game.SPRITE_SIZE + (float) camera.getSize().getHeight() / Game.SPRITE_SIZE + SAFETY_SPACE)
         );
+    }
+
+    public boolean gridWithinBounds(int gridX, int gridY) {
+        return gridX >= 0 && gridX < tiles.length
+                && gridY >= 0 && gridY < tiles[0].length;
+    }
+
+    public void setTile(int gridX, int gridY, Tile tile) {
+        tiles[gridX][gridY] = tile;
     }
 }

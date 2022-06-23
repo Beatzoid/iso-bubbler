@@ -10,10 +10,11 @@ public class Time {
 
     /**
      * Get how many updates there are in a certain amount of seconds
+     *
      * @param seconds The seconds
      */
-    public int getUpdatesFromSeconds(int seconds) {
-        return seconds * GameLoop.UPDATES_PER_SECOND;
+    public int getUpdatesFromSeconds(double seconds) {
+        return (int) Math.round(seconds * GameLoop.UPDATES_PER_SECOND);
     }
 
     public void update() {
@@ -41,5 +42,9 @@ public class Time {
 
         stringBuilder.append(seconds);
         return stringBuilder.toString();
+    }
+
+    public boolean secondsDividableBy(double seconds) {
+        return updatesSinceStart % getUpdatesFromSeconds(seconds) == 0;
     }
 }

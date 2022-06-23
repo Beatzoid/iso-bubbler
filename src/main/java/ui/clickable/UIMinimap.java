@@ -33,6 +33,9 @@ public class UIMinimap extends UIClickable {
     public void update(State state) {
         super.update(state);
 
+        // 4 times every second
+        if (state.getTime().secondsDividableBy(0.25)) generateMap(state.getGameMap());
+
         Camera camera = state.getCamera();
         cameraViewBounds = new Rectangle(
                 (int) (camera.getPosition().getX() * ratio + pixelOffset.intX()),
