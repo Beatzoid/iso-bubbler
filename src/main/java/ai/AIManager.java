@@ -38,9 +38,14 @@ public class AIManager {
      * @param nextState The next state to transition to
      */
     private void transitionTo(String nextState) {
+        //noinspection EnhancedSwitchMigration
         switch (nextState) {
-            case "wander" -> currentAIState = new Wander();
-            case "stand", default -> currentAIState = new Stand();
+            case "wander":
+                currentAIState = new Wander();
+                return;
+            case "stand":
+            default:
+                currentAIState = new Stand();
         }
     }
 }
