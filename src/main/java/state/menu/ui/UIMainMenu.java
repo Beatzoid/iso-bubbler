@@ -9,6 +9,8 @@ import ui.UIText;
 import ui.VerticalContainer;
 import ui.clickable.UIButton;
 
+import java.awt.*;
+
 public class UIMainMenu extends VerticalContainer {
     /**
      * The UIMainMenu manages the Main Menu UI
@@ -18,6 +20,7 @@ public class UIMainMenu extends VerticalContainer {
     public UIMainMenu(Size windowSize) {
         super(windowSize);
         alignment = new Alignment(Alignment.Position.CENTER, Alignment.Position.CENTER);
+        setBackgroundColor(Color.DARK_GRAY);
 
 
         addUIComponent(new UIText("Isobubbler"));

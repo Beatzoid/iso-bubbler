@@ -42,6 +42,7 @@ public class GameState extends State {
     public GameState(Size windowSize, Input input, GameSettings gameSettings) {
         super(windowSize, input, gameSettings);
         gameMap = new GameMap(new Size(15, 10), spriteLibrary);
+        gameSettings.getRenderSettings().getShouldRenderGrid().setValue(false);
         playing = true;
         initializeCharacters();
         initializeUI(windowSize);

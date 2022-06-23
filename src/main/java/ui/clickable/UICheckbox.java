@@ -66,12 +66,14 @@ public class UICheckbox extends UIComponent {
         }
 
         @Override
-        protected void onDrag(State state) {
+        public void onDrag(State state) {
         }
 
         @Override
-        protected void onClick(State state) {
-            setting.setValue(!setting.getValue());
+        public void onClick(State state) {
+            if (hasFocus) {
+                setting.setValue(!setting.getValue());
+            }
         }
 
         @Override

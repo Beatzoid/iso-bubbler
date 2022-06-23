@@ -2,6 +2,7 @@ package ui.clickable;
 
 import core.Size;
 import state.State;
+import ui.Spacing;
 import ui.UIContainer;
 import ui.UIText;
 import ui.VerticalContainer;
@@ -19,7 +20,10 @@ public class UIButton extends UIClickable {
         this.label = new UIText(label);
         this.clickAction = clickAction;
 
+        setMargin(new Spacing(5, 0, 0, 0));
+
         container = new VerticalContainer(new Size(0, 0));
+        container.setCenterChildren(true);
         container.addUIComponent(this.label);
         container.setFixedSize(new Size(200, 40));
     }
@@ -50,7 +54,7 @@ public class UIButton extends UIClickable {
     }
 
     @Override
-    protected void onDrag(State state) {
+    public void onDrag(State state) {
 
     }
 
@@ -60,8 +64,10 @@ public class UIButton extends UIClickable {
     }
 
     @Override
-    protected void onClick(State state) {
-        state.getAudioPlayer().playSound("button.wav");
-        clickAction.execute(state);
+    public void onClick(State state) {
+        if (hasFocus) {
+            state.getAudioPlayer().playSound("button.wav");
+            clickAction.execute(state);
+        }
     }
 }

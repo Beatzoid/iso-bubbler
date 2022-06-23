@@ -22,6 +22,7 @@ public class MenuState extends State {
         super(windowSize, input, gameSettings);
 
         gameMap = new GameMap(new Size(20, 20), spriteLibrary);
+        gameSettings.getRenderSettings().getShouldRenderGrid().setValue(false);
         uiContainers.add(new UIMainMenu(windowSize));
 
         audioPlayer.playMusic("isobubbler.wav");
