@@ -17,8 +17,8 @@ import java.util.Optional;
 public class Player extends Humanoid {
 
     private NPC target;
-    private double targetRange;
-    private SelectionCircle selectionCircle;
+    private final double targetRange;
+    private final SelectionCircle selectionCircle;
 
     /**
      * The player class manages the player

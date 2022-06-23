@@ -10,7 +10,7 @@ import state.State;
 public class BlowBubble extends Action {
 
     private int lifeSpanInUpdates;
-    private Humanoid target;
+    private final Humanoid target;
     private Bubble bubble;
 
     /**

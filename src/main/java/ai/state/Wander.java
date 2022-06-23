@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Wander extends AIState {
 
-    private List<Position> targets;
+    private final List<Position> targets;
 
     public Wander() {
         super();

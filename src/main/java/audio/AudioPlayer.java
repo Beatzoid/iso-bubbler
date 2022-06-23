@@ -10,8 +10,8 @@ import java.util.List;
 
 public class AudioPlayer {
 
-    private AudioSettings audioSettings;
-    private List<AudioClip> audioClips;
+    private final AudioSettings audioSettings;
+    private final List<AudioClip> audioClips;
 
     public AudioPlayer(AudioSettings audioSettings) {
         this.audioSettings = audioSettings;

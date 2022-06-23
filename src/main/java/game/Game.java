@@ -10,13 +10,13 @@ import state.menu.MenuState;
 
 public class Game {
 
-    public static int SPRITE_SIZE = 64;
+    public static final int SPRITE_SIZE = 64;
 
     private final Display display;
     private final Input input;
     private State state;
     private final GameSettings settings;
-    private GameController gameController;
+    private final GameController gameController;
 
     /**
      * The Game class handles making a new input, display, and state.

@@ -53,7 +53,6 @@ public class Vector2D {
      * Get the direction between two positions
      * @param start Start position
      * @param end End position
-     * @return
      */
     public static Vector2D directionBetweenPositions(Position start, Position end) {
         Vector2D direction = new Vector2D(start.getX() - end.getX(), start.getY() - end.getY());

@@ -21,17 +21,17 @@ import java.util.stream.Collectors;
 
 public abstract class State {
 
-    protected GameSettings gameSettings;
-    protected AudioPlayer audioPlayer;
+    protected final GameSettings gameSettings;
+    protected final AudioPlayer audioPlayer;
     protected GameMap gameMap;
-    protected List<GameObject> gameObjects;
-    protected List<UIContainer> uiContainers;
-    protected SpriteLibrary spriteLibrary;
-    protected Input input;
-    protected Camera camera;
-    protected Time time;
-    protected Size windowSize;
-    protected MouseHandler mouseHandler;
+    protected final List<GameObject> gameObjects;
+    protected final List<UIContainer> uiContainers;
+    protected final SpriteLibrary spriteLibrary;
+    protected final Input input;
+    protected final Camera camera;
+    protected final Time time;
+    protected final Size windowSize;
+    protected final MouseHandler mouseHandler;
 
     private State nextState;
 

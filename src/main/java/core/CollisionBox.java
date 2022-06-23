@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class CollisionBox {
 
-    private Rectangle bounds;
+    private final Rectangle bounds;
 
     /**
      * The CollisionBox class manages collision box's

@@ -31,11 +31,14 @@ public abstract class GameObject {
     }
 
     public abstract void update(State state);
+
     public abstract Image getSprite();
+
     public abstract CollisionBox getCollisionBox();
+
     public boolean collidesWith(GameObject other) {
         return getCollisionBox().collidesWith(other.getCollisionBox());
-    };
+    }
 
     /**
      * Return the position
@@ -52,6 +55,7 @@ public abstract class GameObject {
 
     /**
      * Set the position of the GameObject
+     *
      * @param position The position to set it to
      */
     public void setPosition(Position position) {
@@ -67,6 +71,7 @@ public abstract class GameObject {
 
     /**
      * Parent a GameObject
+     *
      * @param parent The GameObject to parent
      */
     public void parent(GameObject parent) {
@@ -104,6 +109,7 @@ public abstract class GameObject {
 
     /**
      * Set the render order
+     *
      * @param renderOrder The new render order
      */
     public void setRenderOrder(int renderOrder) {

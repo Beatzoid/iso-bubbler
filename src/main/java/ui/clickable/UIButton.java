@@ -11,10 +11,10 @@ import java.awt.*;
 
 public class UIButton extends UIClickable {
 
-    private UIContainer container;
-    private UIText label;
+    private final UIContainer container;
+    private final UIText label;
 
-    private ClickAction clickAction;
+    private final ClickAction clickAction;
 
     public UIButton(String label, ClickAction clickAction) {
         this.label = new UIText(label);

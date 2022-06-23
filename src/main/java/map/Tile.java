@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Tile {
 
-    private Image sprite;
+    private final Image sprite;
 
     /**
      * The Tile class handles loading and managing tiles

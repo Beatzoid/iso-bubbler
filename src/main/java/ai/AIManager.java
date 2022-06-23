@@ -18,9 +18,8 @@ public class AIManager {
      * Update the current AI State with the new state and currentCharacter,
      * then transition to the next state if shouldTransition is true
      *
-     * @param state The current state
+     * @param state            The current state
      * @param currentCharacter The current character
-     *
      * @see State
      * @see NPC
      * @see AIState
@@ -35,17 +34,13 @@ public class AIManager {
 
     /**
      * Transition to a new state
-     * 
+     *
      * @param nextState The next state to transition to
      */
     private void transitionTo(String nextState) {
         switch (nextState) {
-            case "wander":
-                currentAIState = new Wander();
-                return;
-            case "stand":
-            default:
-                currentAIState = new Stand();
+            case "wander" -> currentAIState = new Wander();
+            case "stand", default -> currentAIState = new Stand();
         }
     }
 }

@@ -12,11 +12,11 @@ import java.awt.*;
 
 public class UIOptionsMenu extends VerticalContainer {
 
-    private UISlider musicVolSlider;
-    private UIText musicVolLabel;
+    private final UISlider musicVolSlider;
+    private final UIText musicVolLabel;
 
-    private UISlider soundVolSlider;
-    private UIText soundVolLabel;
+    private final UISlider soundVolSlider;
+    private final UIText soundVolLabel;
 
     /**
      * The UIOptionsMenu manages the option's menu UI

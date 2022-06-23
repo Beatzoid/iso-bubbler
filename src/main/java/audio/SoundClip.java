@@ -1,7 +1,6 @@
 package audio;
 
 import game.settings.AudioSettings;
-import game.settings.GameSettings;
 
 import javax.sound.sampled.Clip;
 

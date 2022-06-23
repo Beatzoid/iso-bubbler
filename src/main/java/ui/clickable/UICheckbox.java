@@ -11,7 +11,7 @@ import java.awt.image.BufferedImage;
 
 public class UICheckbox extends UIComponent {
 
-    private UIContainer container;
+    private final UIContainer container;
 
     public UICheckbox(String label, Setting<Boolean> setting) {
         this.container = new HorizontalContainer(new Size(0, 0));
@@ -35,7 +35,7 @@ public class UICheckbox extends UIComponent {
 
     private static class Checkbox extends UIClickable {
 
-        private Setting<Boolean> setting;
+        private final Setting<Boolean> setting;
         private Color color;
 
         private Checkbox(Setting<Boolean> setting) {

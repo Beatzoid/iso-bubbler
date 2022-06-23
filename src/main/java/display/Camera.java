@@ -14,7 +14,7 @@ public class Camera {
     private static final int SAFETY_SPACE = 2 * Game.SPRITE_SIZE;
 
     private Position position;
-    private Size windowSize;
+    private final Size windowSize;
 
     private Rectangle viewBounds;
 

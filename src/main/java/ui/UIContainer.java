@@ -15,12 +15,12 @@ public abstract class UIContainer extends UIComponent {
     protected Color backgroundColor;
 
     protected Alignment alignment;
-    protected Size windowSize;
+    protected final Size windowSize;
     protected boolean centerChildren;
 
     protected Size fixedSize;
 
-    protected List<UIComponent> children;
+    protected final List<UIComponent> children;
 
     /**
      * The UIContainer manages different UI elements

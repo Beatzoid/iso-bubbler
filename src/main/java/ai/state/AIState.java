@@ -6,7 +6,7 @@ import state.State;
 
 public abstract class AIState {
 
-    private AITransition transition;
+    private final AITransition transition;
 
     public AIState() {
         this.transition = initializeTransition();

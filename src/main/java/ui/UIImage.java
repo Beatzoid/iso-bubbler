@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class UIImage extends UIComponent {
 
-    private Image image;
+    private final Image image;
 
     public UIImage(Image image) {
         this.image = image;

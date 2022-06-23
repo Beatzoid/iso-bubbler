@@ -18,7 +18,7 @@ import java.util.Optional;
 
 public class Humanoid extends MovingEntity {
 
-    protected List<Effect> effects;
+    protected final List<Effect> effects;
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     protected Optional<Action> action;
 

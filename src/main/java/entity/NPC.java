@@ -9,7 +9,7 @@ import state.State;
 
 public class NPC extends Humanoid {
 
-    private AIManager aiManager;
+    private final AIManager aiManager;
 
     /**
      * The NPC class manages all NPC's

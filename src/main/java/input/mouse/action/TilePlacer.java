@@ -8,8 +8,8 @@ import ui.UIImage;
 
 public class TilePlacer extends MouseAction {
 
-    private Tile tile;
-    private UIImage preview;
+    private final Tile tile;
+    private final UIImage preview;
     private int gridX;
     private int gridY;
 

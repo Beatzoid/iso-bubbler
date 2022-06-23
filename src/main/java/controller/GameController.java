@@ -7,7 +7,7 @@ import java.awt.event.KeyEvent;
 
 public class GameController {
 
-    private Input input;
+    private final Input input;
 
     /**
      * The GameController handles controls for the game
