@@ -1,17 +1,3 @@
-# Java 2D Game
+# Old Branch
 
-A 2D Game made using Java
-
----
-
-### Game Idea
-
-There are infected people and healthy people. 
-You have to find sick people as quickly as you can before 
-the healthy people get sick. You are also able to get infected too, so you have to watch out!
-
-
----
-
-### Credit
-Credit goes to [this](https://www.youtube.com/playlist?list=PLfHzvwt1lruOl0h6nn72545ISqh6Y1aPb) series
+This is an almost-completed version of this project. The reason it's called "old" is because I started the project from scratch again in the "master" branch, but this time I'm going to comment the code a lot more, take a note more notes, and overall try to understand it more.
